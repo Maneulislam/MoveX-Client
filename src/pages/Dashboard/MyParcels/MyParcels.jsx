@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router";
 
 const MyParcels = () => {
     const { user } = useAuth();
@@ -112,7 +113,8 @@ const MyParcels = () => {
             cost: parcel.cost,
             parcelName: parcel.parcelName,
             senderEmail: parcel.senderEmail,
-            parcelId: parcel._id
+            parcelId: parcel._id,
+            trackingId: parcel.trackingId
         }
 
         const res = await instanceAxios.post('/create-checkout-session', paymentInfo);
@@ -221,7 +223,11 @@ const MyParcels = () => {
                                         </div>
                                     </td>
 
-                                    <td className="align-middle border-r border-base-300">{parcel.trackingId}</td>
+                                    <td className="align-middle border-r border-base-300">
+                                        <Link to={`/parcel-track/${parcel.trackingId}`} className="underline">
+                                            {parcel.trackingId}
+                                        </Link>
+                                    </td>
 
                                     <td className="align-middle border-r border-base-300">${parcel.cost}</td>
                                     <td className="align-middle border-r border-base-300">
