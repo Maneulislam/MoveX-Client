@@ -209,13 +209,16 @@ const MyParcels = () => {
                                             className={`
                                                          ${parcel.deliveryStatus === 'parcel-delivered'
                                                     ? 'badge badge-soft badge-success '
-                                                    : parcel.deliveryStatus === 'driver-assigned'
+                                                    : parcel.deliveryStatus === 'parcel-picked-up'
                                                         ? 'badge badge-soft badge-info'
-                                                        : parcel.deliveryStatus === 'pending-pickup'
-                                                            ?
-                                                            'badge badge-soft text-black'
-                                                            :
-                                                            ''
+                                                        : parcel.deliveryStatus === 'rider-rejected' ?
+                                                            'badge badge-soft badge-error'
+                                                            : parcel.deliveryStatus === 'pending-pickup' ||
+                                                                parcel.deliveryStatus === 'driver-assigned' ||
+                                                                parcel.deliveryStatus === 'rider-arriving'
+                                                                ? 'badge badge-soft text-black'
+                                                                : ''
+
                                                 }
                                                         `}
                                         >

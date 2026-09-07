@@ -23,7 +23,7 @@ const Coverage = () => {
         if (district) {
             const coord = [district.latitude, district.longitude];
 
-            mapRef.current.flyTo(coord, 14)
+            mapRef.current.flyTo(coord, 12)
         }
 
 
@@ -83,7 +83,7 @@ const Coverage = () => {
             </div>
 
 
-            <div className="border-t border border-gray-200 w-full my-10 md:my-14"></div>
+            <div className="border-t border border-gray-200 w-full my-6 md:my-8"></div>
 
 
 

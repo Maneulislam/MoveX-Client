@@ -60,7 +60,6 @@ const SendParcel = () => {
                 cost = minCharge + extraCharge;
             }
         }
-        console.log("cost", cost);
         data.cost = cost;
 
         Swal.fire({
@@ -177,10 +176,21 @@ const SendParcel = () => {
                             <input
                                 type="number"
                                 placeholder="Parcel Weight (KG)"
-                                className="input input-bordered w-full h-9 min-h-9 rounded-md text-sm border-gray-300 focus:border-primary focus:border-2 focus:outline-none"
+                                disabled={watch("docType") === "document"}
+                                className={`input input-bordered w-full h-9 min-h-9 rounded-md text-sm border-gray-300 focus:border-primary focus:border-2 focus:outline-none ${watch("docType") === "document"
+                                    ? "bg-gray-200 cursor-not-allowed"
+                                    : ""
+                                    }`}
+                                {...register("parcelWeight", {
+                                    required: watch("docType") === "not-document"
+                                })}
 
-                                {...register("parcelWeight", { required: true })}
                             />
+                            {watch("docType") === "document" && (
+                                <p className=" text-red-500">
+                                    Weight is not required for documents
+                                </p>
+                            )}
 
                             {errors.parcelWeight?.type === 'required' && <span className="text-red-500">Parcel Weight is required</span>}
 

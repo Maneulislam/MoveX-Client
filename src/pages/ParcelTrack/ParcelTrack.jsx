@@ -15,18 +15,24 @@ const ParcelTrack = () => {
         }
     })
 
+    console.log(trackings);
+
 
     return (
-        <div>
+        <div className="mb-20">
 
-            Trackings:{trackings.length}
+
+
+            <div className="text-xl mb-10 ml-10">
+                <span className="font-bold"> Tracking ID:</span> {trackings[0]?.trackingId || trackingId}
+            </div>
 
 
 
             <ul className="timeline timeline-vertical">
 
                 {
-                    trackings.map(tracking => <li key={tracking._id}>
+                    trackings.map(tracking => <li key={tracking._id} className="">
                         <div className="timeline-start">
                             {new Date(tracking.createdAt).toLocaleString("en-GB", {
                                 day: "2-digit",
@@ -51,7 +57,7 @@ const ParcelTrack = () => {
                                 />
                             </svg>
                         </div>
-                        <div className="timeline-end timeline-box">
+                        <div className="timeline-end timeline-box text-lg">
                             {tracking.details}
                         </div>
                         <hr />

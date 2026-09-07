@@ -26,7 +26,6 @@ const Register = () => {
 
 
     const handleRegister = (data) => {
-        console.log(data);
 
         const profileImage = data.photo[0];
 
@@ -56,7 +55,7 @@ const Register = () => {
                         instanceAxios.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log("User created in the database");
+                                    // console.log("User created in the database");
                                 }
                             })
 
@@ -80,7 +79,7 @@ const Register = () => {
 
             })
             .catch((error) => {
-                console.log(error);
+
                 Swal.fire({
                     icon: 'error',
                     title: 'Registration Failed',
@@ -97,7 +96,7 @@ const Register = () => {
 
         signInWithGoogle()
             .then(result => {
-                console.log(result.user);
+
 
                 // Create User in database
 
@@ -110,7 +109,7 @@ const Register = () => {
                 instanceAxios.post('/users', userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            console.log("User created in the database from Social login");
+                            // console.log("User created in the database from Social login");
                         }
                     })
 

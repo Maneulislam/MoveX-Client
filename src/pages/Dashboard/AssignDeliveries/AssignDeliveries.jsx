@@ -96,9 +96,10 @@ const AssignDeliveries = () => {
                             <th className="align-middle text-center border-r border-base-300">Parcel Name</th>
                             <th className="align-middle text-center border-r border-base-300">Delivery Status</th>
                             <th className="align-middle text-center border-r border-base-300">Amount</th>
-                            {/* <th className="align-middle text-center border-r border-base-300">Time</th> */}
-                            <th className="align-middle text-center border-r border-base-300">Confirm Actions</th>
-                            <th className="align-middle text-center">Other Actions</th>
+                            <th className="align-middle text-center border-r border-base-300">Time</th>
+                            <th className="align-middle text-center border-r border-base-300">Actions</th>
+
+
                         </tr>
                     </thead>
 
@@ -130,7 +131,8 @@ const AssignDeliveries = () => {
 
                                     <td className="align-middle border-r border-base-300">${parcel.cost}</td>
 
-                                    {/* <td className="align-middle border-r border-base-300">
+
+                                    <td className="align-middle border-r border-base-300">
                                         {new Date(parcel.createdAt).toLocaleString("en-GB", {
                                             day: "2-digit",
                                             month: "short",
@@ -139,45 +141,54 @@ const AssignDeliveries = () => {
                                             minute: "2-digit",
                                             hour12: true,
                                         })}
-                                    </td> */}
-
-
-
-                                    <td className="align-middle space-x-4 border-r border-base-300" >
-
-                                        {
-                                            parcel.deliveryStatus === 'driver-assigned' ? <>
-                                                <button onClick={() => handleDeliveryStatusUpdate(parcel, 'rider-arriving')} className="btn btn-square hover:bg-primary" title="Accept">
-                                                    <PiUserCircleCheckBold size={30} />
-
-                                                </button>
-
-                                                <button onClick={() => handleDeliveryStatusUpdate(parcel, 'rider-rejected')} className="btn btn-square hover:bg-primary" title="Reject" >
-                                                    <ImCross size={22} />
-
-                                                </button>
-                                            </>
-                                                :
-                                                <>
-
-                                                    <div className="align-middle">
-                                                        {parcel.deliveryStatus !== 'rider-rejected' ? (
-                                                            <div className="badge badge-soft badge-success">
-                                                                Accepted
-                                                            </div>
-                                                        ) : parcel.deliveryStatus === 'rider-rejected' ? (
-                                                            <div className="badge badge-soft badge-error">
-                                                                Rejected
-                                                            </div>
-                                                        ) : null}
-                                                    </div>
-
-                                                </>
-                                        }
-
-
-
                                     </td>
+
+
+
+                                    {
+                                        parcel.deliveryStatus === 'driver-assigned' &&
+
+                                        <td className="align-middle space-x-4 border-r border-base-300" >
+
+                                            {
+                                                parcel.deliveryStatus === 'driver-assigned' ? <>
+                                                    <button onClick={() => handleDeliveryStatusUpdate(parcel, 'rider-arriving')} className="btn btn-square hover:bg-primary" title="Accept">
+                                                        <PiUserCircleCheckBold size={30} />
+
+                                                    </button>
+
+                                                    <button onClick={() => handleDeliveryStatusUpdate(parcel, 'rider-rejected')} className="btn btn-square hover:bg-primary" title="Reject" >
+                                                        <ImCross size={22} />
+
+                                                    </button>
+                                                </>
+                                                    :
+                                                    <>
+
+                                                        <div className="align-middle">
+                                                            {parcel.deliveryStatus !== 'rider-rejected' ? (
+                                                                <div className="badge badge-soft badge-success">
+                                                                    Accepted
+                                                                </div>
+                                                            ) : parcel.deliveryStatus === 'rider-rejected' ? (
+                                                                <div className="badge badge-soft badge-error">
+                                                                    Rejected
+                                                                </div>
+                                                            ) : null}
+                                                        </div>
+
+                                                    </>
+                                            }
+
+
+
+                                        </td>
+
+
+
+                                    }
+
+
 
 
 
@@ -185,15 +196,31 @@ const AssignDeliveries = () => {
                                         parcel.deliveryStatus !== 'rider-rejected' && <>
 
                                             <td className="align-middle border-r border-base-300">
-                                                <button onClick={() => handleDeliveryStatusUpdate(parcel, 'parcel-picked-up')} className="btn hover:bg-primary mr-3" title="Picked Up">
-                                                    Picked Up
 
-                                                </button>
+                                                {parcel.deliveryStatus === 'rider-arriving' && (
+                                                    <button
+                                                        onClick={() =>
+                                                            handleDeliveryStatusUpdate(parcel, 'parcel-picked-up')
+                                                        }
+                                                        className="btn bg-primary mr-3"
+                                                        title="Picked Up"
+                                                    >
+                                                        Picked Up
+                                                    </button>
+                                                )}
 
-                                                <button onClick={() => handleDeliveryStatusUpdate(parcel, 'parcel-delivered')} className="btn hover:bg-primary" title="Delivered" >
-                                                    Delivered
+                                                {parcel.deliveryStatus === 'parcel-picked-up' && (
+                                                    <button
+                                                        onClick={() =>
+                                                            handleDeliveryStatusUpdate(parcel, 'parcel-delivered')
+                                                        }
+                                                        className="btn bg-primary"
+                                                        title="Delivered"
+                                                    >
+                                                        Delivered
+                                                    </button>
+                                                )}
 
-                                                </button>
                                             </td>
 
                                         </>
