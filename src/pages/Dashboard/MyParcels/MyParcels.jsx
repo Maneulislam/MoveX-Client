@@ -130,7 +130,7 @@ const MyParcels = () => {
         <div>
 
             {/* Total */}
-            <div className="card card-side bg-base-300 shadow-sm w-52 px-5 m-6">
+            <div className="card card-side bg-base-300 shadow-sm w-56 px-5 m-6">
                 <figure>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@ const MyParcels = () => {
                     </svg>
                 </figure>
                 <div className="card-body flex-1 items-center">
-                    <h2 className="text-sm font-bold">Total Parcels</h2>
+                    <h2 className="text-base font-bold">Total Parcels</h2>
                     <p className="text-3xl font-bold">{parcels.length}</p>
                 </div>
             </div>

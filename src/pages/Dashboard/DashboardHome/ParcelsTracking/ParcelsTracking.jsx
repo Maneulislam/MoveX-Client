@@ -1,33 +1,19 @@
-import { useQuery } from '@tanstack/react-query';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
+import useAuth from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
-const CompletedDeliveries = () => {
-
+const ParcelsTracking = () => {
     const { user } = useAuth();
     const instanceAxios = useAxiosSecure();
 
-
-    const { data: parcels = [], } = useQuery({
-        queryKey: ['parcels', user.email, 'driver-assigned'],
+    const { data: parcels = [] } = useQuery({
+        queryKey: ['myParcels', user?.email],
         queryFn: async () => {
-            const res = await instanceAxios.get(`/parcels/rider?riderEmail=${user.email}&deliveryStatus=parcel-delivered`);
+            const res = await instanceAxios.get(`parcels?email=${user?.email}`);
             return res.data;
-        }
-    })
-
-
-    const calculatePayout = parcel => {
-        if (parcel.senderDistrict === parcel.receiverDistrict) {
-            return parcel.cost * 0.6;
-        }
-        else {
-            return parcel.cost * 0.8;
-        }
-    }
-
-
-
+        },
+    });
 
 
 
@@ -35,7 +21,7 @@ const CompletedDeliveries = () => {
         <div>
 
             {/* Total */}
-            <div className="card card-side bg-base-300 shadow-sm w-72 px-5 my-6">
+            <div className="card card-side bg-base-300 shadow-sm w-60 px-5 m-6">
                 <figure>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -49,11 +35,11 @@ const CompletedDeliveries = () => {
                         strokeLinejoin="round"
                         className="lucide lucide-land-plot-icon lucide-land-plot"
                     >
-                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" />
+                        <path d="M12 12v5.5" /><path d="M17 3h2a2 2 0 012 2v2" /><path d="M21 17v2a2 2 0 01-2 2h-2" /><path d="M3 7V5a2 2 0 012-2h2" /><path d="M7 21H5a2 2 0 01-2-2v-2" /><path d="M7.264 9.252 12 12l4.737-2.748" /><path d="M7.995 8.514A2 2 0 007 10.244v3.516a2 2 0 00.996 1.73l3 1.74a2 2 0 002.008 0l3-1.74A2 2 0 0017 13.76v-3.517a2 2 0 00-.995-1.73l-3-1.742a2 2 0 00-1.892-.064z" />
                     </svg>
                 </figure>
                 <div className="card-body flex-1 items-center">
-                    <h2 className="text-base font-bold">Completed Deliveries</h2>
+                    <h2 className="text-base font-bold">Total Trackings</h2>
                     <p className="text-3xl font-bold">{parcels.length}</p>
                 </div>
             </div>
@@ -68,12 +54,9 @@ const CompletedDeliveries = () => {
                         <tr className="bg-base-200 text-center align-middle border-b border-base-300">
                             <th className="align-middle text-center border-r border-base-300">#</th>
                             <th className="align-middle text-center border-r border-base-300">Parcel Name</th>
-                            <th className="align-middle text-center border-r border-base-300">Pickup District</th>
-                            <th className="align-middle text-center border-r border-base-300">Deliveries District</th>
-                            <th className="align-middle text-center border-r border-base-300">Amount</th>
-                            <th className="align-middle text-center border-r border-base-300">Payout</th>
+                            <th className="align-middle text-center border-r border-base-300">Delivery Status</th>
+                            <th className="align-middle text-center border-r border-base-300">Tracking ID</th>
                             <th className="align-middle text-center border-r border-base-300">Time</th>
-                            <th className="align-middle text-center">Actions</th>
                         </tr>
                     </thead>
 
@@ -86,20 +69,34 @@ const CompletedDeliveries = () => {
 
 
 
+
                                     <td className="align-middle border-r border-base-300">
-                                        {parcel.senderDistrict}
+                                        <div
+                                            className={`
+                                                         ${parcel.deliveryStatus === 'parcel-delivered'
+                                                    ? 'badge badge-soft badge-success '
+                                                    : parcel.deliveryStatus === 'parcel-picked-up'
+                                                        ? 'badge badge-soft badge-info'
+                                                        : parcel.deliveryStatus === 'rider-rejected' ?
+                                                            'badge badge-soft badge-error'
+                                                            : parcel.deliveryStatus === 'pending-pickup' ||
+                                                                parcel.deliveryStatus === 'driver-assigned' ||
+                                                                parcel.deliveryStatus === 'rider-arriving'
+                                                                ? 'badge badge-soft text-black'
+                                                                : ''
+
+                                                }
+                                                        `}
+                                        >
+                                            {parcel.deliveryStatus}
+                                        </div>
                                     </td>
 
                                     <td className="align-middle border-r border-base-300">
-                                        {parcel.receiverDistrict}
+                                        <Link to={`/parcel-track/${parcel.trackingId}`} className="btn hover:bg-primary border-2 border-primary">
+                                            {parcel.trackingId}
+                                        </Link>
                                     </td>
-
-
-                                    <td className="align-middle border-r border-base-300">${parcel.cost}</td>
-
-
-                                    <td className="align-middle border-r border-base-300">${calculatePayout(parcel)}</td>
-
 
                                     <td className="align-middle border-r border-base-300">
                                         {new Date(parcel.createdAt).toLocaleString("en-GB", {
@@ -113,18 +110,6 @@ const CompletedDeliveries = () => {
                                     </td>
 
 
-
-
-
-
-                                    <td className="align-middle border-r border-base-300">
-                                        <button className="btn bg-primary mr-3" title="Cash Out">
-                                            Cash Out
-
-                                        </button>
-                                    </td>
-
-
                                 </tr>
                             ))
                         }
@@ -133,9 +118,8 @@ const CompletedDeliveries = () => {
             </div>
 
 
-
         </div>
     );
 };
 
-export default CompletedDeliveries;
+export default ParcelsTracking;

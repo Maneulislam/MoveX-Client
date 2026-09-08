@@ -143,7 +143,7 @@ const ApproveRiders = () => {
 
 
             {/* Total */}
-            <div className="card card-side bg-base-300 shadow-sm w-60 px-5 m-6">
+            <div className="card card-side bg-base-300 shadow-sm w-64 px-5 m-6">
                 <figure>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +161,7 @@ const ApproveRiders = () => {
                     </svg>
                 </figure>
                 <div className="card-body flex-1 items-center">
-                    <h2 className="text-sm font-bold">Total Application</h2>
+                    <h2 className="text-base font-bold">Total Application</h2>
                     <p className="text-3xl font-bold">{riders.length}</p>
                 </div>
             </div>
