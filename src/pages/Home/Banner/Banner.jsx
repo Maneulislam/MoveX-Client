@@ -3,11 +3,11 @@ import { Carousel } from 'react-responsive-carousel';
 import bannerImg1 from '../../../assets/banner/banner1.png'
 import bannerImg2 from '../../../assets/banner/banner2.png'
 import bannerImg3 from '../../../assets/banner/banner3.png'
-import { BsArrowUpRightCircleFill } from "react-icons/bs";
+import { Link } from "react-router";
 
 const Banner = () => {
     return (
-        <Carousel className="mb-14"
+        <Carousel className="mb-28 mt-14"
             autoPlay={true}
             infiniteLoop={true}
             showThumbs={false}
@@ -16,20 +16,10 @@ const Banner = () => {
             <div className="relative">
                 <img src={bannerImg1} />
 
-                <div className="absolute bottom-32 left-24 ">
-                    <p className="text-black max-w-xl">
-                        Enjoy fast, reliable parcel delivery with real-time tracking
-                        and zero hassle. From personal packages to business shipments —
-                        we deliver on time, every time.
-                    </p>
-
-                </div>
-
 
                 <div className="flex items-center absolute bottom-16 left-24">
-                    <button className="btn bg-primary rounded-4xl">Track Your Parcel</button>
-                    <button className="text-4xl"><BsArrowUpRightCircleFill /> </button>
-                    <button className="btn ml-4">Be A Rider</button>
+                    <Link to={'/dashboard/parcels-tracking'} className="btn bg-primary">Track Your Parcel</Link>
+                    <Link to={'/dashboard/be-rider'} className="btn ml-7">Be A Rider</Link>
 
                 </div>
 
@@ -38,20 +28,11 @@ const Banner = () => {
 
             <div className="relative">
                 <img src={bannerImg2} />
-                <div className="absolute bottom-32 left-24 ">
-                    <p className="text-black max-w-xl">
-                        Enjoy fast, reliable parcel delivery with real-time tracking
-                        and zero hassle. From personal packages to business shipments —
-                        we deliver on time, every time.
-                    </p>
-
-                </div>
 
 
                 <div className="flex items-center absolute bottom-16 left-24">
-                    <button className="btn bg-primary rounded-4xl">Track Your Parcel</button>
-                    <button className="text-4xl"><BsArrowUpRightCircleFill /> </button>
-                    <button className="btn ml-4">Be A Rider</button>
+                    <Link to={'/dashboard/parcels-tracking'} className="btn bg-primary">Track Your Parcel</Link>
+                    <Link to={'/dashboard/be-rider'} className="btn ml-7">Be A Rider</Link>
 
                 </div>
 
@@ -60,20 +41,12 @@ const Banner = () => {
 
             <div className="relative">
                 <img src={bannerImg3} />
-                <div className="absolute bottom-32 left-24 ">
-                    <p className="text-black max-w-xl">
-                        Enjoy fast, reliable parcel delivery with real-time tracking
-                        and zero hassle. From personal packages to business shipments —
-                        we deliver on time, every time.
-                    </p>
 
-                </div>
 
 
                 <div className="flex items-center absolute bottom-16 left-24">
-                    <button className="btn bg-primary rounded-4xl">Track Your Parcel</button>
-                    <button className="text-4xl"><BsArrowUpRightCircleFill /> </button>
-                    <button className="btn ml-4">Be A Rider</button>
+                    <Link to={'/dashboard/parcels-tracking'} className="btn bg-primary">Track Your Parcel</Link>
+                    <Link to={'/dashboard/be-rider'} className="btn ml-7">Be A Rider</Link>
 
                 </div>
 

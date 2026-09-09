@@ -2,9 +2,9 @@ import BookingImage from '../../assets/bookingIcon.png';
 
 const HowWorks = () => {
     return (
-        <div className='w-10/12 max-w-7xl mx-auto mb-14 px-4 sm:px-0'>
+        <div className='w-10/12 max-w-7xl mx-auto mb-28 px-4 sm:px-0'>
 
-            <h3 className='text-2xl md:text-3xl font-extrabold mb-8 text-center sm:text-left'>How it Works</h3>
+            <h3 className='text-3xl md:text-4xl font-extrabold mb-16 text-center '>How it Works</h3>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
 

@@ -114,19 +114,25 @@ const DashboardLayout = () => {
 
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/be-rider"
-                                onClick={closeDrawer}
-                                className={navLinkClass}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
-                                    <circle cx="18.5" cy="17.5" r="3.5" /><circle cx="5.5" cy="17.5" r="3.5" /><circle cx="15" cy="5" r="1" /><path d="M12 17.5V14l-3-3 4-3 2 3h2" />
+                        {
+                            role !== 'rider' && <>
 
-                                </svg>
-                                <span className="text-base">Be a Rider</span>
-                            </NavLink>
-                        </li>
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/be-rider"
+                                        onClick={closeDrawer}
+                                        className={navLinkClass}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
+                                            <circle cx="18.5" cy="17.5" r="3.5" /><circle cx="5.5" cy="17.5" r="3.5" /><circle cx="15" cy="5" r="1" /><path d="M12 17.5V14l-3-3 4-3 2 3h2" />
+
+                                        </svg>
+                                        <span className="text-base">Be a Rider</span>
+                                    </NavLink>
+                                </li>
+
+                            </>
+                        }
 
 
 

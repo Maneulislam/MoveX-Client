@@ -22,11 +22,12 @@ import start_people from '../../../assets/brands/start_people.png'
 const Brands = () => {
     return (
 
-        <div className='max-w-9/12 mx-auto mb-14'>
+        <div className='max-w-9/12 mx-auto mb-28 '>
 
-            <h4 className='text-3xl font-bold text-center mb-8'>We've helped thousands of sales teams</h4>
+            <h4 className='text-3xl font-bold text-center mb-16'>We've helped thousands of sales teams</h4>
 
             <Swiper
+                className='border-l-2 border-r-2 border-primary'
                 modules={[Autoplay]}
                 spaceBetween={30}
                 slidesPerView={4}

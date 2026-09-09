@@ -4,7 +4,7 @@ import merchant from '../../../assets/be-a-merchant-bg.png'
 const CustomerSatisfaction = () => {
     return (
         <div>
-            <div className="hero bg-secondary rounded-2xl w-full max-w-11/12 lg:max-w-9/12 mx-auto mb-14 relative overflow-hidden">
+            <div className="hero bg-secondary rounded-2xl w-full max-w-11/12 lg:max-w-9/12 mx-auto mb-28 relative overflow-hidden">
 
                 <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
                     <img

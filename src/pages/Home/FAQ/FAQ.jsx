@@ -1,12 +1,11 @@
-import { BsArrowUpRightCircleFill } from "react-icons/bs";
 
 const FAQ = () => {
     return (
-        <div className='max-w-8/12 mx-auto mb-14 '>
+        <div className='max-w-8/12 mx-auto mb-28'>
             <div className=' max-w-2xl mx-auto text-center'>
                 <h1 className='text-4xl font-bold'>Frequently Asked Question (FAQ)</h1>
 
-                <p className='text-gray-700 mt-4 mb-6'>Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce pain, and strengthen your body with ease!</p>
+                <p className='text-gray-700 mt-8 mb-12'>Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce pain, and strengthen your body with ease!</p>
             </div>
 
 
@@ -82,13 +81,6 @@ const FAQ = () => {
                     </div>
                 </div>
 
-            </div>
-
-
-
-            <div className="flex items-center justify-center mt-7">
-                <a className="btn bg-primary font-extrabold text-xl">See More FAQ’s</a>
-                <a className="text-4xl bg-primary rounded-4xl"><BsArrowUpRightCircleFill /></a>
             </div>
 
 

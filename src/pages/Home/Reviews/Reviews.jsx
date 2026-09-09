@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import { use } from 'react';
 import customer from '../../../assets/customer-top.png'
 
 
@@ -19,14 +19,14 @@ const Reviews = ({ reviewsPromise }) => {
     console.log(reviews);
 
     return (
-        <div className='max-w-9/12 mx-auto mb-16'>
+        <div className='max-w-9/12 mx-auto mb-28'>
             <div className='flex items-center justify-center'>
                 <img src={customer} alt="" />
             </div>
 
-            <div className='text-center max-w-2xl mx-auto my-4'>
-                <h2 className='text-3xl font-bold mb-2'>What our customers are sayings</h2>
-                <p className='text-gray-700 mb-12'>Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce pain, and strengthen your body with ease!</p>
+            <div className='text-center max-w-2xl mx-auto my-8'>
+                <h2 className='text-3xl font-bold mb-4'>What our customers are sayings</h2>
+                <p className='text-gray-700 mb-20'>Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce pain, and strengthen your body with ease!</p>
 
             </div>
 
@@ -40,13 +40,7 @@ const Reviews = ({ reviewsPromise }) => {
                     slidesPerView={3}
                     spaceBetween={30}
                     loop={true}
-                    // coverflowEffect={{
-                    //     rotate: 20,
-                    //     stretch: 50,
-                    //     depth: 200,
-                    //     modifier: 1,
-                    //     slideShadows: true,
-                    // }}
+
                     autoplay={{
                         delay: 2000,
                         disableOnInteraction: false,
@@ -55,7 +49,7 @@ const Reviews = ({ reviewsPromise }) => {
                         clickable: true,
                     }}
                     modules={[EffectCoverflow, Pagination, Autoplay]}
-                    className="mySwiper"
+                    className="mySwiper border-l-2 border-r-2 border-primary"
                 >
 
                     {
