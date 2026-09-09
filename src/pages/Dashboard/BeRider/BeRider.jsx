@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import useAuth from "../../hooks/useAuth";
 import { useLoaderData, useNavigate } from "react-router";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import riderImage from '../../assets/agent-pending.png'
+import riderImage from '../../../assets/agent-pending.png'
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-const Rider = () => {
+const BeRider = () => {
     const {
         register,
         handleSubmit,
@@ -27,6 +27,7 @@ const Rider = () => {
         return regionDistricts.map((d) => d.district);
     };
 
+
     const handleRiderApplication = (data) => {
 
         console.log(data);
@@ -34,6 +35,8 @@ const Rider = () => {
         instanceAxios.post('/riders', data)
             .then(res => {
                 if (res.data.insertedId) {
+
+                    navigate('/assigned-deliveries');
 
                     Swal.fire({
                         position: "top-end",
@@ -49,6 +52,8 @@ const Rider = () => {
 
 
     };
+
+
 
     return (
         <div className="max-w-6xl mx-auto p-6 px-6 md:p-10 md:px-20 mb-20">
@@ -243,4 +248,4 @@ const Rider = () => {
     );
 };
 
-export default Rider;
+export default BeRider;

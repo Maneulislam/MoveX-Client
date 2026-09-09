@@ -8,8 +8,6 @@ import AuthenticationLayOut from "../layouts/AuthenticationLayOut";
 import Login from "../pages/Authentication/Login/Login";
 import Register from "../pages/Authentication/Register/Register";
 import PrivateRoute from "./PrivateRoute";
-import Rider from "../pages/Rider/Rider";
-import SendParcel from "../pages/SendParcel/SendParcel";
 import ForgetPassword from "../pages/Authentication/ForgetPassword/ForgetPassword";
 import EnterCode from "../pages/Authentication/ForgetPassword/EnterCode";
 import ResetPassword from "../pages/Authentication/ForgetPassword/ResetPassword";
@@ -29,6 +27,8 @@ import CompletedDeliveries from "../pages/Dashboard/CompletedDeliveries/Complete
 import ParcelTrack from "../pages/ParcelTrack/ParcelTrack";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import ParcelsTracking from "../pages/Dashboard/DashboardHome/ParcelsTracking/ParcelsTracking";
+import BookParcel from "../pages/Dashboard/BookParcel/BookParcel";
+import BeRider from "../pages/Dashboard/BeRider/BeRider";
 
 
 export const router = createBrowserRouter([
@@ -47,19 +47,11 @@ export const router = createBrowserRouter([
                 loader: () => fetch('/servicePoints.json').then(res => res.json())
             },
 
-            {
-                path: 'rider',
-                element: <PrivateRoute><Rider></Rider></PrivateRoute>,
-                loader: () => fetch('/servicePoints.json').then(res => res.json())
-            },
-
-            {
-                path: 'send-parcel',
-                element: <PrivateRoute><SendParcel></SendParcel></PrivateRoute>,
-                loader: () => fetch('/servicePoints.json').then(res => res.json())
-
-            },
-
+            // {
+            //     path: 'rider',
+            //     element: <PrivateRoute><Rider></Rider></PrivateRoute>,
+            //     loader: () => fetch('/servicePoints.json').then(res => res.json())
+            // },
 
             {
                 path: 'parcel-track/:trackingId',
@@ -127,6 +119,20 @@ export const router = createBrowserRouter([
                 index: true,
                 Component: DashboardHome
             },
+
+            {
+                path: 'book-parcel',
+                Component: BookParcel,
+                loader: () => fetch('/servicePoints.json').then(res => res.json())
+
+            },
+
+            {
+                path: 'be-rider',
+                Component: BeRider,
+                loader: () => fetch('/servicePoints.json').then(res => res.json())
+            },
+
 
             {
                 path: 'my-parcels',

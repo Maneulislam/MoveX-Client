@@ -39,7 +39,7 @@ const ParcelsTracking = () => {
                     </svg>
                 </figure>
                 <div className="card-body flex-1 items-center">
-                    <h2 className="text-base font-bold">Total Trackings</h2>
+                    <h2 className="text-base font-bold">Total Parcels</h2>
                     <p className="text-3xl font-bold">{parcels.length}</p>
                 </div>
             </div>
@@ -55,7 +55,7 @@ const ParcelsTracking = () => {
                             <th className="align-middle text-center border-r border-base-300">#</th>
                             <th className="align-middle text-center border-r border-base-300">Parcel Name</th>
                             <th className="align-middle text-center border-r border-base-300">Delivery Status</th>
-                            <th className="align-middle text-center border-r border-base-300">Tracking ID</th>
+                            <th className="align-middle text-center border-r border-base-300">Tracking Button</th>
                             <th className="align-middle text-center border-r border-base-300">Time</th>
                         </tr>
                     </thead>

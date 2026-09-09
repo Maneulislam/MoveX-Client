@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
-import parcel from "../../assets/parcel-icon.jpg"
+import parcel from "../../../assets/parcel-icon.jpg"
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-const SendParcel = () => {
+
+const BookParcel = () => {
 
     const {
         register,
@@ -100,11 +101,11 @@ const SendParcel = () => {
     return (
         <div className='card bg-white  mb-16'>
 
-            <div className='px-28 py-20'>
+            <div className='px-40 py-20'>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3 sm:gap-5 mb-8 sm:mb-16 ">
                     <img className="w-40 h-20 object-contain" src={parcel} alt="" />
-                    <h1 className='text-5xl font-extrabold '>Send A Parcel</h1>
+                    <h1 className='text-5xl font-extrabold '>Book A Parcel</h1>
 
                 </div>
                 <h6 className='text-2xl font-extrabold'>Enter your parcel details</h6>
@@ -521,4 +522,4 @@ const SendParcel = () => {
     );
 };
 
-export default SendParcel;
+export default BookParcel;
