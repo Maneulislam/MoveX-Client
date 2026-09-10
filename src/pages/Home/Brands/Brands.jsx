@@ -27,7 +27,7 @@ const Brands = () => {
             <h4 className='text-3xl font-bold text-center mb-16'>We've helped thousands of sales teams</h4>
 
             <Swiper
-                className='border-l-2 border-r-2 border-primary'
+                className='border-l-4 border-r-4 border-primary'
                 modules={[Autoplay]}
                 spaceBetween={30}
                 slidesPerView={4}

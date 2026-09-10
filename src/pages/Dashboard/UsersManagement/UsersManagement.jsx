@@ -147,19 +147,21 @@ const UsersManagement = () => {
 
                                     <td className="align-middle border-r border-base-300">
                                         <div className="w-12 h-12">
-                                            {user?.photoURL ? (
-                                                <img
-                                                    src={user.photoURL}
-                                                    alt={user?.displayName || "User"}
-                                                    referrerPolicy="no-referrer"
-                                                    className="w-12 h-12 rounded-full object-cover"
-                                                    onError={(e) => {
-                                                        e.currentTarget.style.display = "none";
-                                                        e.currentTarget.nextElementSibling.classList.remove("hidden");
-                                                        e.currentTarget.nextElementSibling.classList.add("flex");
-                                                    }}
-                                                />
-                                            ) : null}
+                                            {
+                                                user?.photoURL ? (
+                                                    <img
+                                                        src={user.photoURL}
+                                                        alt={user?.displayName || "User"}
+                                                        referrerPolicy="no-referrer"
+                                                        className="w-12 h-12 rounded-full object-cover"
+                                                        onError={(e) => {
+                                                            e.currentTarget.style.display = "none";
+                                                            e.currentTarget.nextElementSibling.classList.remove("hidden");
+                                                            e.currentTarget.nextElementSibling.classList.add("flex");
+                                                        }}
+                                                    />
+                                                ) : null
+                                            }
 
                                             <div
                                                 className={`w-12 h-12 rounded-full bg-[#c93612] items-center justify-center ${user?.photoURL ? "hidden" : "flex"

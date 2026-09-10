@@ -56,7 +56,6 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
-        console.log("Google login");
 
         signInWithGoogle()
             .then(result => {
@@ -176,7 +175,7 @@ const Login = () => {
 
                     <button
                         type="submit"
-                        className="btn w-full min-h-8 h-8 border-none rounded-md bg-primary hover:bg-[#a8d82f] text-black text-xs font-bold shadow-none"
+                        className="btn w-full min-h-8 h-8 border-none rounded-md bg-primary hover:bg-[#a8d82f] text-black text-base font-extrabold shadow-none"
                     >
                         Login
                     </button>
@@ -187,7 +186,7 @@ const Login = () => {
                     <Link
                         state={location.state}
                         to="/register"
-                        className="text-primary font-bold hover:underline "
+                        className="text-secondary text-sm font-extrabold hover:underline "
                     >
                         Register
                     </Link>
@@ -212,7 +211,7 @@ const Login = () => {
                 <button
                     type="button"
                     onClick={handleGoogleLogin}
-                    className="btn w-full min-h-8 h-8 rounded-md bg-[#e9edf3] hover:bg-[#dfe4eb] border-none text-black shadow-none text-xs font-bold"
+                    className="btn w-full min-h-8 h-8 rounded-md bg-[#e9edf3] hover:bg-[#dfe4eb] border-none text-black shadow-none font-extrabold"
                 >
                     <FcGoogle className="text-base" />
                     Login with Google

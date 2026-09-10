@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Register = () => {
 
@@ -13,6 +14,9 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+    const [googleError, setGoogleError] = useState("");
+
 
     const location = useLocation();
 
@@ -117,6 +121,15 @@ const Register = () => {
             })
             .catch(error => {
                 console.log(error);
+                if (error.code === "auth/popup-closed-by-user") {
+                    setGoogleError("Google login was cancelled.");
+                } else if (error.code === "auth/popup-blocked") {
+                    setGoogleError("Google login popup was blocked.");
+                } else {
+                    setGoogleError(
+                        error.message || "Google login failed. Please try again."
+                    );
+                }
             })
 
 
@@ -231,7 +244,7 @@ const Register = () => {
 
                     <button
                         type="submit"
-                        className="btn w-full min-h-8 h-8 border-none rounded-md bg-primary hover:bg-[#a8d82f] text-black text-xs font-bold shadow-none mt-2"
+                        className="btn w-full min-h-8 h-8 border-none rounded-md bg-primary hover:bg-[#a8d82f] text-black text-base font-extrabold shadow-none mt-2"
                     >
                         Register
                     </button>
@@ -242,7 +255,7 @@ const Register = () => {
                     <Link
                         state={location.state}
                         to="/login"
-                        className="text-primary font-bold hover:underline "
+                        className="text-secondary text-sm font-extrabold underline "
                     >
                         Login
                     </Link>
@@ -261,11 +274,17 @@ const Register = () => {
                 <button
                     type="button"
                     onClick={handleGoogleRegister}
-                    className="btn w-full min-h-8 h-8 rounded-md bg-[#e9edf3] hover:bg-[#dfe4eb] border-none text-black shadow-none text-xs font-bold"
+                    className="btn w-full min-h-8 h-8 rounded-md bg-[#e9edf3] hover:bg-[#dfe4eb] border-none text-black shadow-none text-sm font-extrabold"
                 >
                     <FcGoogle className="text-base" />
                     Register with Google
                 </button>
+
+                {googleError && (
+                    <div className="text-red-500 text-sm font-medium mb-2">
+                        {googleError}
+                    </div>
+                )}
 
             </div>
 
