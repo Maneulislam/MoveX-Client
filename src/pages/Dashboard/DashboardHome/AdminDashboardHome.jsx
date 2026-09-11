@@ -9,6 +9,8 @@ import {
     Tooltip,
 } from "recharts";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router";
+import { FaArrowRight } from "react-icons/fa";
 
 // Custom Tooltip for Chart Hover
 const CustomTooltip = ({ active, payload }) => {
@@ -74,6 +76,24 @@ const AdminDashboardHome = () => {
 
     return (
         <div className="p-6 space-y-8">
+
+
+            <div className="flex justify-between">
+                <div>
+                    <h3 className="text-3xl font-extrabold">Dashboard Overview</h3>
+                    <p className="text-gray-500 mt-3 mb-12">You can access all your data and information from anywhere.</p>
+                </div>
+
+                <Link to={'/dashboard/assign-riders'} className="btn bg-primary text-lg rounded-lg font-bold px-6 py-6">
+                    Assign Riders  <FaArrowRight className="ml-2 text-2xl" />
+
+
+                </Link>
+
+            </div>
+
+
+
             {/* Top Stats Cards */}
             <div className="flex justify-center gap-5 flex-wrap my-6 mb-16">
                 {deliveryStats.map((stat) => (

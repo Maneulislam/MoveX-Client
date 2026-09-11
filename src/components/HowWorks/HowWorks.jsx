@@ -6,9 +6,9 @@ const HowWorks = () => {
 
             <h3 className='text-3xl md:text-4xl font-extrabold mb-16 text-center '>How it Works</h3>
 
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12'>
 
-                <div className="bg-base-100 w-full shadow-sm rounded-2xl border border-gray-100">
+                <div className="bg-base-100 w-full shadow-lg hover:bg-primary rounded-2xl border border-gray-100">
                     <figure className='pl-5 pt-5'>
                         <img
                             src={BookingImage}
@@ -20,7 +20,7 @@ const HowWorks = () => {
                     </div>
                 </div>
 
-                <div className="bg-base-100 w-full shadow-sm rounded-2xl border border-gray-100">
+                <div className="bg-base-100 w-full shadow-lg hover:bg-primary rounded-2xl border border-gray-100">
                     <figure className='pl-5 pt-5'>
                         <img
                             src={BookingImage}
@@ -32,7 +32,7 @@ const HowWorks = () => {
                     </div>
                 </div>
 
-                <div className="bg-base-100 w-full shadow-sm rounded-2xl border border-gray-100">
+                <div className="bg-base-100 w-full shadow-lg hover:bg-primary rounded-2xl border border-gray-100">
                     <figure className='pl-5 pt-5'>
                         <img
                             src={BookingImage}
@@ -44,7 +44,7 @@ const HowWorks = () => {
                     </div>
                 </div>
 
-                <div className="bg-base-100 w-full shadow-sm rounded-2xl border border-gray-100">
+                <div className="bg-base-100 w-full shadow-lg hover:bg-primary rounded-2xl border border-gray-100">
                     <figure className='pl-5 pt-5'>
                         <img
                             src={BookingImage}

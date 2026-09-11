@@ -99,23 +99,31 @@ const DashboardLayout = () => {
 
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/book-parcel"
-                                onClick={closeDrawer}
-                                className={navLinkClass}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
-                                    <path d="M12 13V7" /><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /><path d="m9 10 3 3 3-3" />
-                                </svg>
-                                <span className="text-base">Book a Parcel</span>
-                            </NavLink>
-                        </li>
+                        {
 
+                            role === 'user' && <>
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/book-parcel"
+                                        onClick={closeDrawer}
+                                        className={navLinkClass}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
+                                            <path d="M12 13V7" /><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /><path d="m9 10 3 3 3-3" />
+                                        </svg>
+                                        <span className="text-base">Book a Parcel</span>
+                                    </NavLink>
+                                </li>
+
+
+                            </>
+
+                        }
 
 
                         {
-                            role !== 'rider' && <>
+                            role === 'user' && <>
 
                                 <li>
                                     <NavLink
@@ -136,35 +144,61 @@ const DashboardLayout = () => {
 
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/my-parcels"
-                                onClick={closeDrawer}
-                                className={navLinkClass}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
-                                    <path d="M10 22v-8" />
-                                    <path d="M2.336 8.89 10 14l11.715-7.029" />
-                                    <path d="M22 14a2 2 0 0 1-.971 1.715l-10 6a2 2 0 0 1-2.138-.05l-6-4A2 2 0 0 1 2 16v-6a2 2 0 0 1 .971-1.715l10-6a2 2 0 0 1 2.138.05l6 4A2 2 0 0 1 22 8z" />
-                                </svg>
-                                <span className="text-base">My Parcels</span>
-                            </NavLink>
-                        </li>
+                        {
+
+                            role === 'user' && <>
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/my-parcels"
+                                        onClick={closeDrawer}
+                                        className={navLinkClass}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
+                                            <path d="M10 22v-8" />
+                                            <path d="M2.336 8.89 10 14l11.715-7.029" />
+                                            <path d="M22 14a2 2 0 0 1-.971 1.715l-10 6a2 2 0 0 1-2.138-.05l-6-4A2 2 0 0 1 2 16v-6a2 2 0 0 1 .971-1.715l10-6a2 2 0 0 1 2.138.05l6 4A2 2 0 0 1 22 8z" />
+                                        </svg>
+                                        <span className="text-base">My Parcels</span>
+                                    </NavLink>
+                                </li>
 
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/payment-history"
-                                onClick={closeDrawer}
-                                className={navLinkClass}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="3" fill="none" stroke="currentColor" className="size-7">
-                                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /><path d="M12 7v5l4 2" />
-                                </svg>
-                                <span className="text-base">Payment History</span>
-                            </NavLink>
-                        </li>
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/payment-history"
+                                        onClick={closeDrawer}
+                                        className={navLinkClass}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="3" fill="none" stroke="currentColor" className="size-7">
+                                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /><path d="M12 7v5l4 2" />
+                                        </svg>
+                                        <span className="text-base">Payment History</span>
+                                    </NavLink>
+                                </li>
+
+
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/parcels-tracking"
+                                        onClick={closeDrawer}
+                                        className={navLinkClass}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
+                                            <path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" /><circle cx="12" cy="8" r="2" /><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                                        </svg>
+                                        <span className="text-base">Parcels Tracking</span>
+                                    </NavLink>
+                                </li>
+
+
+
+                            </>
+
+                        }
+
 
 
 
@@ -271,18 +305,7 @@ const DashboardLayout = () => {
 
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/parcels-tracking"
-                                onClick={closeDrawer}
-                                className={navLinkClass}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
-                                    <path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" /><circle cx="12" cy="8" r="2" /><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
-                                </svg>
-                                <span className="text-base">Parcels Tracking</span>
-                            </NavLink>
-                        </li>
+
 
 
 

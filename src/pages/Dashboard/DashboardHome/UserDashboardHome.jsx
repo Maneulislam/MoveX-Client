@@ -1,15 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-    ResponsiveContainer,
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-} from "recharts";
+import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, } from "recharts";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
+import { TiPlusOutline } from "react-icons/ti";
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -73,6 +67,22 @@ const UserDashboardHome = () => {
 
     return (
         <div className="p-6 space-y-8">
+
+            <div className="flex justify-between">
+                <div>
+                    <h3 className="text-3xl font-extrabold">Dashboard Overview</h3>
+                    <p className="text-gray-500 mt-3 mb-12">You can access all your data and information from anywhere.</p>
+                </div>
+
+                <Link to={'/dashboard/book-parcel'} className="btn bg-primary text-lg rounded-lg font-bold px-6 py-6">
+                    <TiPlusOutline className="mr-2 text-3xl" /> Create Parcel
+
+
+                </Link>
+
+            </div>
+
+
             <div className="flex justify-center gap-5 flex-wrap my-6 mb-16">
                 <div className="stats shadow bg-base-200">
                     <div className="stat place-items-center">

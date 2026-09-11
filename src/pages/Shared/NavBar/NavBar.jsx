@@ -106,7 +106,7 @@ const NavBar = () => {
 
                                 <ul
                                     tabIndex={0}
-                                    className="menu menu-sm dropdown-content mt-3 z-[100] p-4 shadow-lg bg-base-100 rounded-box w-64 space-y-3"
+                                    className="menu menu-sm dropdown-content mt-3 z-100 p-4 shadow-lg bg-base-100 rounded-box w-64 space-y-3"
                                 >
                                     <li className="flex flex-col items-center border-b border-dashed border-gray-300 pb-3 pointer-events-none">
                                         <div className="avatar">
