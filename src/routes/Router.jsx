@@ -29,6 +29,7 @@ import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import ParcelsTracking from "../pages/Dashboard/DashboardHome/ParcelsTracking/ParcelsTracking";
 import BookParcel from "../pages/Dashboard/BookParcel/BookParcel";
 import BeRider from "../pages/Dashboard/BeRider/BeRider";
+import AllParcels from "../pages/Dashboard/AllParcels/AllParcels";
 
 
 export const router = createBrowserRouter([
@@ -179,6 +180,11 @@ export const router = createBrowserRouter([
 
 
             // Admin only routes
+
+            {
+                path: 'all-parcels',
+                element: <AdminRoute><AllParcels></AllParcels></AdminRoute>
+            },
 
             {
                 path: 'approve-riders',

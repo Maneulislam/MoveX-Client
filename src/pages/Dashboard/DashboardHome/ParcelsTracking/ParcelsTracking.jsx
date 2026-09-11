@@ -70,9 +70,9 @@ const ParcelsTracking = () => {
 
 
 
-                                    <td className="align-middle border-r border-base-300">
+                                    <td className="align-middle border-r border-base-300 p-2 sm:p-4 whitespace-nowrap">
                                         <div
-                                            className={`
+                                            className={`text-xs sm:text-sm px-2 sm:px-3 py-1
                                                          ${parcel.deliveryStatus === 'parcel-delivered'
                                                     ? 'badge badge-soft badge-success '
                                                     : parcel.deliveryStatus === 'parcel-picked-up'
@@ -93,7 +93,7 @@ const ParcelsTracking = () => {
                                     </td>
 
                                     <td className="align-middle border-r border-base-300">
-                                        <Link to={`/parcel-track/${parcel.trackingId}`} className="btn hover:bg-primary border-2 border-primary">
+                                        <Link to={`/parcel-track/${parcel.trackingId}`} className="btn hover:bg-primary border-2 border-primary truncate">
                                             {parcel.trackingId}
                                         </Link>
                                     </td>

@@ -1,24 +1,42 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router";
+import { useState } from "react";
 
-const MyParcels = () => {
-    const { user } = useAuth();
+const AllParcels = () => {
+
     const instanceAxios = useAxiosSecure();
+    const [search, setSearch] = useState('');
+
+    const { data: parcelsSearch = [] } = useQuery({
+        queryKey: ['allParcels', search],
+        queryFn: async () => {
+            const res = await instanceAxios.get(`/parcels?search=${search}`);
+            console.log("SEARCH RESPONSE:", res.data);
+
+            return res.data;
+        }
+    });
+
 
     const { data: parcels = [], refetch } = useQuery({
-        queryKey: ['myParcels', user?.email],
+        queryKey: ['myParcels'],
         queryFn: async () => {
-            const res = await instanceAxios.get(`parcels?email=${user?.email}`);
+            const res = await instanceAxios.get(`parcels`);
+            console.log("ALL RESPONSE:", res.data);
+
             return res.data;
         },
     });
 
-    console.log(user);
+
+    console.log("parcels:", parcels);
+    console.log("parcelsSearch:", parcelsSearch);
+
+
 
 
 
@@ -107,22 +125,7 @@ const MyParcels = () => {
     };
 
 
-    const handlePayment = async (parcel) => {
 
-        const paymentInfo = {
-            cost: parcel.cost,
-            parcelName: parcel.parcelName,
-            senderEmail: parcel.senderEmail,
-            parcelId: parcel._id,
-            trackingId: parcel.trackingId
-        }
-
-        const res = await instanceAxios.post('/create-checkout-session', paymentInfo);
-
-        console.log(res.data);
-
-        window.location.assign(res.data.url);
-    }
 
 
 
@@ -159,6 +162,30 @@ const MyParcels = () => {
 
 
 
+            {/* Search */}
+            <div className="w-full max-w-md mt-10">
+                <label className="relative flex items-center w-full pr-24 rounded-sm border-2 border-base-300 focus-within:border-primary focus-within:outline-none focus-within:ring-0">
+
+                    <svg className="h-5 w-5 opacity-60 ml-3 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+                        <path d="m21 21-4.3-4.3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    </svg>
+
+
+                    <input onChange={(e) => setSearch(e.target.value)} className="bg-transparent grow border-none text-sm md:text-base px-2 py-2 outline-none focus:outline-none focus:ring-0" name="location" type="search" placeholder="Search Parcel" />
+
+
+                    <button type="submit" className="btn bg-primary text-black border-none absolute right-1 top-1 bottom-1 px-5 min-h-0 h-auto">
+                        Search
+                    </button>
+                </label>
+            </div>
+
+
+
+
+
+
             {/* Table */}
             <div className="overflow-x-auto mt-10">
                 <table className="table table-zebra w-full border-collapse border border-base-300">
@@ -166,7 +193,8 @@ const MyParcels = () => {
                         <tr className="bg-base-200 text-center align-middle border-b border-base-300">
                             <th className="align-middle text-center border-r border-base-300">#</th>
                             <th className="align-middle text-center border-r border-base-300">Parcel Name</th>
-                            <th className="align-middle text-center border-r border-base-300">Payment</th>
+                            <th className="align-middle text-center border-r border-base-300">Sender Email</th>
+                            <th className="align-middle text-center border-r border-base-300">Receiver Email</th>
                             <th className="align-middle text-center border-r border-base-300">Delivery Status</th>
                             <th className="align-middle text-center border-r border-base-300">Tracking ID</th>
                             <th className="align-middle text-center border-r border-base-300">Amount</th>
@@ -177,7 +205,7 @@ const MyParcels = () => {
 
                     <tbody>
                         {
-                            parcels.map((parcel, index) => (
+                            (search ? parcelsSearch : parcels).map((parcel, index) => (
                                 <tr key={parcel._id} className="text-center align-middle border-b border-base-300">
                                     <th className="align-middle text-center border-r border-base-300">{index + 1}</th>
                                     <td className="align-middle border-r border-base-300">{parcel.parcelName}</td>
@@ -185,52 +213,60 @@ const MyParcels = () => {
 
                                     <td className="align-middle border-r border-base-300">
 
-                                        {
-                                            parcel.paymentStatus === "paid" ?
-                                                <span className="text-green-500 font-bold">
-                                                    <div className="badge badge-soft badge-success">
-                                                        Paid
-
-                                                    </div>
-                                                </span>
-                                                :
-
-                                                <button onClick={() => handlePayment(parcel)} className="btn btn-sm bg-primary">
-                                                    Pay
-                                                </button>
-
-                                        }
-
+                                        {parcel.senderEmail?.split('@')[0]}@...
 
                                     </td>
 
+                                    <td className="align-middle border-r border-base-300">
+
+                                        {parcel.receiverEmail?.split('@')[0]}@...
+
+                                    </td>
+
+
+
                                     <td className="align-middle border-r border-base-300 p-2 sm:p-4 whitespace-nowrap">
                                         <div
-                                            className={`text-xs sm:text-sm px-2 sm:px-3 py-1
-                                                         ${parcel.deliveryStatus === 'parcel-delivered'
-                                                    ? 'badge badge-soft badge-success '
-                                                    : parcel.deliveryStatus === 'parcel-picked-up'
-                                                        ? 'badge badge-soft badge-info'
-                                                        : parcel.deliveryStatus === 'rider-rejected' ?
-                                                            'badge badge-soft badge-error'
-                                                            : parcel.deliveryStatus === 'pending-pickup' ||
-                                                                parcel.deliveryStatus === 'driver-assigned' ||
-                                                                parcel.deliveryStatus === 'rider-arriving'
-                                                                ? 'badge badge-soft text-black'
-                                                                : ''
+                                            className={`text-xs sm:text-sm px-2 sm:px-3 py-1 $ ${parcel.deliveryStatus === 'parcel-delivered'
 
-                                                }
-                                                        `}
+                                                ? 'badge badge-soft badge-success '
+
+                                                : parcel.deliveryStatus === 'parcel-picked-up'
+
+                                                    ? 'badge badge-soft badge-info'
+
+                                                    : parcel.deliveryStatus === 'rider-rejected' ?
+
+                                                        'badge badge-soft badge-error'
+
+                                                        : parcel.deliveryStatus === 'pending-pickup' ||
+
+                                                            parcel.deliveryStatus === 'driver-assigned' ||
+
+                                                            parcel.deliveryStatus === 'rider-arriving'
+
+                                                            ? 'badge badge-soft text-black'
+
+                                                            : ''
+                                                }`}
                                         >
                                             {parcel.deliveryStatus}
                                         </div>
                                     </td>
 
+
+
                                     <td className="align-middle border-r border-base-300">
-                                        <Link to={`/parcel-track/${parcel.trackingId}`} className="btn hover:bg-primary border-2 border-primary truncate">
+
+                                        <Link to={`/parcel-track/${parcel.trackingId}`} className="btn hover:bg-primary border-2 border-primary truncate ">
+
                                             {parcel.trackingId}
+
                                         </Link>
+
                                     </td>
+
+
 
                                     <td className="align-middle border-r border-base-300">${parcel.cost}</td>
                                     <td className="align-middle border-r border-base-300">
@@ -243,6 +279,8 @@ const MyParcels = () => {
                                             hour12: true,
                                         })}
                                     </td>
+
+
 
                                     <td className="align-middle px-2 py-3">
                                         <div className="flex flex-wrap items-center gap-2 sm:gap-4 justify-start sm:justify-center">
@@ -277,4 +315,4 @@ const MyParcels = () => {
     );
 };
 
-export default MyParcels;
+export default AllParcels;

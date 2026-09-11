@@ -6,6 +6,7 @@ import useRole from "../hooks/useRole";
 const DashboardLayout = () => {
 
     const { role } = useRole();
+    console.log(role);
 
     const drawerInputRef = useRef(null);
 
@@ -99,8 +100,8 @@ const DashboardLayout = () => {
 
 
 
-                        {
 
+                        {
                             role === 'user' && <>
 
                                 <li>
@@ -116,10 +117,12 @@ const DashboardLayout = () => {
                                     </NavLink>
                                 </li>
 
-
                             </>
-
                         }
+
+
+
+
 
 
                         {
@@ -143,10 +146,9 @@ const DashboardLayout = () => {
                         }
 
 
-
                         {
-
                             role === 'user' && <>
+
 
                                 <li>
                                     <NavLink
@@ -180,27 +182,8 @@ const DashboardLayout = () => {
 
 
 
-                                <li>
-                                    <NavLink
-                                        to="/dashboard/parcels-tracking"
-                                        onClick={closeDrawer}
-                                        className={navLinkClass}
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
-                                            <path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" /><circle cx="12" cy="8" r="2" /><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
-                                        </svg>
-                                        <span className="text-base">Parcels Tracking</span>
-                                    </NavLink>
-                                </li>
-
-
-
                             </>
-
                         }
-
-
-
 
 
 
@@ -253,6 +236,23 @@ const DashboardLayout = () => {
                         {
                             role === 'admin' &&
                             <>
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/all-parcels"
+                                        onClick={closeDrawer}
+                                        className={navLinkClass}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
+                                            <path d="m12 8 6-3-6-3v10" /><path d="m8 11.99-5.5 3.14a1 1 0 0 0 0 1.74l8.5 4.86a2 2 0 0 0 2 0l8.5-4.86a1 1 0 0 0 0-1.74L16 12" /><path d="m6.49 12.85 11.02 6.3" /><path d="M17.51 12.85 6.5 19.15" />
+                                        </svg>
+                                        <span className="text-base">All Parcels</span>
+                                    </NavLink>
+                                </li>
+
+
+
+
                                 <li>
                                     <NavLink
                                         to="/dashboard/approve-riders"
@@ -305,8 +305,26 @@ const DashboardLayout = () => {
 
 
 
+                        {
+                            role === 'user' && <>
+
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/parcels-tracking"
+                                        onClick={closeDrawer}
+                                        className={navLinkClass}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="size-7">
+                                            <path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" /><circle cx="12" cy="8" r="2" /><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                                        </svg>
+                                        <span className="text-base">Parcels Tracking</span>
+                                    </NavLink>
+                                </li>
 
 
+                            </>
+
+                        }
 
 
 
