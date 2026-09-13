@@ -15,8 +15,6 @@ const AllParcels = () => {
         queryKey: ['allParcels', search],
         queryFn: async () => {
             const res = await instanceAxios.get(`/parcels?search=${search}`);
-            console.log("SEARCH RESPONSE:", res.data);
-
             return res.data;
         }
     });
@@ -26,15 +24,13 @@ const AllParcels = () => {
         queryKey: ['myParcels'],
         queryFn: async () => {
             const res = await instanceAxios.get(`parcels`);
-            console.log("ALL RESPONSE:", res.data);
 
             return res.data;
         },
     });
 
 
-    console.log("parcels:", parcels);
-    console.log("parcelsSearch:", parcelsSearch);
+
 
 
 
@@ -50,7 +46,13 @@ const AllParcels = () => {
                 icon: 'info',
                 html: `
                 <div style="text-align: left; font-size: 14px; line-height: 1.8;">
-                <p><strong>Receiver Name:</strong> ${parcel.receiverName}</p>
+
+                    <p><strong>Sender Name:</strong> ${parcel.senderName}</p>
+                    <p><strong>Sender Email:</strong> ${parcel.senderEmail}</p>
+                    <p><strong>Sender Region:</strong> ${parcel.senderRegion}</p>
+                    <p><strong>Sender District:</strong> ${parcel.senderDistrict}</p>
+
+                    <p><strong>Receiver Name:</strong> ${parcel.receiverName}</p>
                     <p><strong>Receiver Email:</strong> ${parcel.receiverEmail}</p>
                     <p><strong>Receiver Phone:</strong> ${parcel.receiverPhone}</p>
                     <p><strong>Receiver Address:</strong> ${parcel.receiverAddress}</p>

@@ -30,6 +30,7 @@ import ParcelsTracking from "../pages/Dashboard/DashboardHome/ParcelsTracking/Pa
 import BookParcel from "../pages/Dashboard/BookParcel/BookParcel";
 import BeRider from "../pages/Dashboard/BeRider/BeRider";
 import AllParcels from "../pages/Dashboard/AllParcels/AllParcels";
+import Settings from "../pages/Dashboard/Settings/Settings";
 
 
 export const router = createBrowserRouter([
@@ -47,12 +48,6 @@ export const router = createBrowserRouter([
                 Component: Coverage,
                 loader: () => fetch('/servicePoints.json').then(res => res.json())
             },
-
-            // {
-            //     path: 'rider',
-            //     element: <PrivateRoute><Rider></Rider></PrivateRoute>,
-            //     loader: () => fetch('/servicePoints.json').then(res => res.json())
-            // },
 
             {
                 path: 'parcel-track/:trackingId',
@@ -160,6 +155,10 @@ export const router = createBrowserRouter([
             {
                 path: 'parcels-tracking',
                 Component: ParcelsTracking
+            },
+            {
+                path: 'settings',
+                Component: Settings
             },
 
 
