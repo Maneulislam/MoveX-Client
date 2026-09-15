@@ -15,7 +15,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="bg-base-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen pb-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
@@ -30,7 +30,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Info Cards */}
                     <div className="space-y-6">
-                        <div className="card bg-base-200 border border-base-300 shadow-sm p-6">
+                        <div className="card  border border-base-300 shadow-sm p-6">
                             <div className="flex items-center gap-4">
                                 <div className="p-3 bg-secondary text-white rounded-xl">
                                     <FaPhone className="w-5 h-5" />
@@ -43,7 +43,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="card bg-base-200 border border-base-300 shadow-sm p-6">
+                        <div className="card  border border-base-300 shadow-sm p-6">
                             <div className="flex items-center gap-4">
                                 <div className="p-3 bg-secondary text-white rounded-xl">
                                     <FaEnvelope className="w-5 h-5" />
@@ -56,7 +56,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="card bg-base-200 border border-base-300 shadow-sm p-6">
+                        <div className="card  border border-base-300 shadow-sm p-6">
                             <div className="flex items-center gap-4">
                                 <div className="p-3 bg-secondary text-white rounded-xl">
                                     <FaLocationDot className="w-5 h-5" />
@@ -84,7 +84,7 @@ const Contact = () => {
 
                     {/* Form */}
                     <div className="lg:col-span-2">
-                        <div className="card bg-base-200 border border-base-300 shadow-md p-6 sm:p-8">
+                        <div className="card  border border-base-300 shadow-md p-6 sm:p-8">
                             <div className="flex items-center gap-3 mb-6">
                                 <FaComments className="text-secondary w-6 h-6" />
                                 <h2 className="text-2xl font-bold text-base-content">Send Us a Message</h2>
@@ -99,7 +99,7 @@ const Contact = () => {
                                         <input
                                             type="text"
                                             placeholder="Your Name"
-                                            className={`input input-bordered w-full bg-base-100 focus:outline-none focus:border-white ${errors.name ? 'input-error' : ''
+                                            className={`input input-bordered w-full bg-base-100 focus:outline-none focus:border-2 focus:border-primary ${errors.name ? 'input-error' : ''
                                                 }`}
                                             {...register('name', { required: 'Name is required' })}
                                         />
@@ -115,7 +115,7 @@ const Contact = () => {
                                         <input
                                             type="email"
                                             placeholder="Email Address"
-                                            className={`input input-bordered w-full bg-base-100 focus:outline-none focus:border-primary ${errors.email ? 'input-error' : ''
+                                            className={`input input-bordered w-full bg-base-100 focus:outline-none focus:border-2 focus:border-primary${errors.email ? 'input-error' : ''
                                                 }`}
                                             {...register('email', {
                                                 required: 'Email is required',
@@ -139,7 +139,7 @@ const Contact = () => {
                                         <input
                                             type="tel"
                                             placeholder="Phone Number"
-                                            className="input input-bordered w-full bg-base-100 focus:outline-none focus:border-primary"
+                                            className="input input-bordered w-full bg-base-100 focus:outline-none focus:border-2 focus:border-primary"
                                             {...register('phone')}
                                         />
                                     </div>
@@ -149,7 +149,7 @@ const Contact = () => {
                                             <span className="label-text font-medium">Subject</span>
                                         </label>
                                         <select
-                                            className={`select select-bordered w-full bg-base-100 focus:outline-none focus:border-primary ${errors.subject ? 'select-error' : ''
+                                            className={`select select-bordered w-full bg-base-100 focus:outline-none focus:border-2 focus:border-primary ${errors.subject ? 'select-error' : ''
                                                 }`}
                                             {...register('subject', { required: 'Please select an inquiry type' })}
                                         >
@@ -172,7 +172,7 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         placeholder="Tracking ID"
-                                        className="input input-bordered w-full bg-base-100 focus:outline-none focus:border-primary"
+                                        className="input input-bordered w-full bg-base-100 focus:outline-none focus:border-2 focus:border-primary"
                                         {...register('trackingId')}
                                     />
                                 </div>
@@ -182,7 +182,7 @@ const Contact = () => {
                                         <span className="label-text font-medium">Your Message</span>
                                     </label>
                                     <textarea
-                                        className={`textarea textarea-bordered h-32 bg-base-100 focus:outline-none focus:border-primary ${errors.message ? 'textarea-error' : ''
+                                        className={`textarea textarea-bordered h-32 bg-base-100 focus:outline-none focus:border-2 focus:border-primary ${errors.message ? 'textarea-error' : ''
                                             }`}
                                         placeholder="Tell us how we can help..."
                                         {...register('message', { required: 'Message is required' })}

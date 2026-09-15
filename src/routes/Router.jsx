@@ -32,6 +32,8 @@ import AllParcels from "../pages/Dashboard/AllParcels/AllParcels";
 import Settings from "../pages/Dashboard/Settings/Settings";
 import TrackOrder from "../pages/TrackOrder/TrackOrder";
 import Contact from "../pages/Contact/Contact";
+import Services from "../pages/Services/Services";
+import ParcelsTracking from "../pages/Dashboard/DashboardHome/ParcelsTracking/ParcelsTracking";
 
 
 export const router = createBrowserRouter([
@@ -42,6 +44,11 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: 'services',
+                Component: Services,
+                loader: () => fetch('/services.json').then(res => res.json())
             },
 
             {
@@ -156,6 +163,10 @@ export const router = createBrowserRouter([
             {
                 path: 'payment-history',
                 Component: PaymentHistory,
+            },
+            {
+                path: 'parcel-tracking',
+                Component: ParcelsTracking
             },
             {
                 path: 'track-order',

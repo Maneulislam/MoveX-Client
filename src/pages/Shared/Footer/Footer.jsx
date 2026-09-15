@@ -3,8 +3,11 @@ import Logo from "../../../components/Logo/Logo";
 import { BsLinkedin } from "react-icons/bs";
 import { FaFacebook, FaXTwitter } from "react-icons/fa6";
 import { GrYoutube } from "react-icons/gr";
+import useRole from "../../../hooks/useRole";
 
 const Footer = () => {
+
+    const { role } = useRole();
 
     return (
         <footer className=" bg-black  p-6 sm:p-8 lg:p-16">
@@ -34,14 +37,17 @@ const Footer = () => {
                         }>Coverage</NavLink></li>
 
 
+                        {
+                            role === 'user' &&
+                            <>
 
-                        <li><NavLink to="/pricing" className={({ isActive }) =>
-                            isActive ? "text-primary font-semibold" : "text-gray-300 hover:text-white"
-                        }>Pricing</NavLink></li>
+                                <li><NavLink to="/dashboard/parcel-tracking" className={({ isActive }) =>
+                                    isActive ? "text-primary font-semibold" : "text-gray-300 hover:text-white"
+                                }>Track Order</NavLink></li>
 
-                        <li><NavLink to="/send-parcel" className={({ isActive }) =>
-                            isActive ? "text-primary font-semibold" : "text-gray-300 hover:text-white"
-                        }>Send Parcel</NavLink></li>
+                            </>}
+
+
 
                         <li><NavLink to="/about-us" className={({ isActive }) =>
                             isActive ? "text-primary font-semibold" : "text-gray-300   hover:text-white"
