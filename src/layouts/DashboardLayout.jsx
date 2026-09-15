@@ -1,12 +1,15 @@
 import { useRef } from "react";
-import { NavLink, Outlet } from "react-router";
+import { Link, Navigate, NavLink, Outlet } from "react-router";
 import Logo from "../components/Logo/Logo";
 import useRole from "../hooks/useRole";
+import { FiLogOut } from "react-icons/fi";
+import useAuth from "../hooks/useAuth";
+import { FaArrowRight } from "react-icons/fa";
 
 const DashboardLayout = () => {
 
+    const { user, logOut } = useAuth();
     const { role } = useRole();
-    console.log(role);
 
     const drawerInputRef = useRef(null);
 
@@ -21,6 +24,17 @@ const DashboardLayout = () => {
             drawerInputRef.current.checked = !drawerInputRef.current.checked;
         }
     };
+
+    const handleLogout = () => {
+        logOut()
+        Navigate('/login')
+            .then()
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+
 
 
     const navLinkClass = ({ isActive }) =>
@@ -50,6 +64,98 @@ const DashboardLayout = () => {
                     <div className="flex-1 pl-2 text-2xl font-bold">
                         ZapShift Dashboard
                     </div>
+
+
+
+                    <div className="navbar-end gap-2 md:gap-3 pr-3">
+
+                        <div className="dropdown dropdown-end">
+                            <div
+                                tabIndex={0}
+                                role="button"
+                                className="w-12 h-12 ring ring-[#632EE3] rounded-full overflow-hidden cursor-pointer flex items-center justify-center"
+                            >
+                                {user?.photoURL ? (
+                                    <img
+                                        src={user.photoURL}
+                                        alt={user?.displayName || "User"}
+                                        className="w-10 h-10 rounded-full object-cover"
+                                        onError={(e) => {
+                                            e.currentTarget.style.display = "none";
+                                            e.currentTarget.nextElementSibling.classList.remove("hidden");
+                                            e.currentTarget.nextElementSibling.classList.add("flex");
+                                        }}
+                                    />
+                                ) : null}
+
+                                <div
+                                    className={`w-10 h-10 rounded-full bg-[#c93612] items-center justify-center ${user?.photoURL ? "hidden" : "flex"
+                                        }`}
+                                >
+                                    <span className="text-white text-2xl font-normal">
+                                        {user?.displayName?.trim()?.charAt(0)?.toUpperCase() || "U"}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content mt-3 z-100 p-4 shadow-lg bg-base-100 rounded-box w-64 space-y-3"
+                            >
+                                <li className="flex flex-col items-center border-b border-dashed border-gray-300 pb-3 pointer-events-none">
+                                    <div className="avatar">
+                                        <div className="w-14 h-14 rounded-full ring ring-[#632EE3] overflow-hidden">
+                                            {user?.photoURL ? (
+                                                <img
+                                                    src={user.photoURL}
+                                                    alt={user?.displayName || "User Avatar"}
+                                                    className="w-14 h-14 rounded-full object-cover"
+                                                />
+                                            ) : (
+                                                <div className="w-14 h-14 rounded-full bg-[#c93612] flex items-center justify-center">
+                                                    <span className="text-white text-2xl font-normal">
+                                                        {user?.displayName?.trim()?.charAt(0)?.toUpperCase() || "U"}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <p className="font-bold text-base text-center mt-1">
+                                        {user?.displayName}
+                                    </p>
+                                    <p className="text-xs text-base-content/70 text-center break-all ">
+                                        {user?.email}
+                                    </p>
+                                </li>
+
+                                <li className="p-0 hover:bg-transparent">
+                                    <Link
+                                        to="/"
+                                        onClick={() => document.activeElement?.blur()}
+                                        className="btn btn-outline text-base border-2 border-primary hover:btn-primary btn-sm text-black w-full flex justify-center items-center "
+                                    >
+                                        Home <FaArrowRight />
+
+                                    </Link>
+                                </li>
+
+                                <li className="p-0 hover:bg-transparent">
+                                    <button
+                                        onClick={handleLogout}
+                                        className="btn btn-outline border-2 text-base btn-error btn-sm w-full flex justify-center items-center "
+                                    >
+                                        <FiLogOut />  Logout
+
+                                    </button>
+                                </li>
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+
+
                 </nav>
 
                 <main className="p-4 flex-1">
@@ -352,6 +458,19 @@ const DashboardLayout = () => {
 
                     </ul>
 
+
+
+
+
+                    <li className="p-5 hover:bg-transparent w-full">
+                        <button
+                            onClick={handleLogout}
+                            className="btn btn-outline border-2 border-gray-300 text-base btn-error btn-sm w-full flex justify-start  gap-10 font-bold  text-gray-300 hover:bg-error hover:text-black"
+                        >
+                            <FiLogOut size={25} />  Logout
+
+                        </button>
+                    </li>
 
 
                 </div>

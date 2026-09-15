@@ -102,7 +102,7 @@ const AdminDashboardHome = () => {
                     >
                         <div className="flex flex-col items-center gap-2 px-6 py-8">
                             {/* Icon badge */}
-                            <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-2 bg-[#EEF9DA] group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-2 bg-[#EEF9DA] group-hover:scale-110 transition-transform duration-300">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="w-6 h-6 text-[#8FC31F]"

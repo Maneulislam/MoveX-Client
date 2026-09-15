@@ -31,6 +31,7 @@ import BeRider from "../pages/Dashboard/BeRider/BeRider";
 import AllParcels from "../pages/Dashboard/AllParcels/AllParcels";
 import Settings from "../pages/Dashboard/Settings/Settings";
 import TrackOrder from "../pages/TrackOrder/TrackOrder";
+import Contact from "../pages/Contact/Contact";
 
 
 export const router = createBrowserRouter([
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             {
                 path: 'about-us',
                 Component: AboutUs,
+            },
+            {
+                path: 'contact',
+                Component: Contact,
             },
 
             {
