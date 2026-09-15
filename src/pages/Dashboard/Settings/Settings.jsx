@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaUser, FaBell, FaMapMarkerAlt, FaShieldAlt, FaSave, FaCamera, FaCheckCircle } from 'react-icons/fa';
+import { FaUser, FaBell, FaMapMarkerAlt, FaShieldAlt, FaSave, FaCheckCircle } from 'react-icons/fa';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
@@ -27,7 +27,6 @@ const Settings = () => {
             reset({
                 displayName: userData?.displayName || user?.displayName || '',
                 email: userData?.email || user?.email || '',
-                photoURL: userData?.photoURL || user?.photoURL || '',
                 role: userData?.role || 'user',
                 phone: userData?.phone || '',
                 defaultAddress: userData?.defaultAddress || '',
@@ -41,25 +40,20 @@ const Settings = () => {
     }, [userData, user, reset]);
 
     const onSubmit = async (data) => {
-        try {
-            if (!data.currentPassword) delete data.currentPassword;
-            if (!data.newPassword) delete data.newPassword;
+        if (!data.currentPassword) delete data.currentPassword;
+        if (!data.newPassword) delete data.newPassword;
 
-            const res = await instanceAxios.patch(`/users/${user?.email}`, data);
+        const res = await instanceAxios.patch(`/users/${user?.email}`, data);
 
-            if (res.data.modifiedCount > 0 || res.data.matchedCount > 0 || res.data.upsertedCount > 0 || res.data.acknowledged) {
-                refetch();
-                setIsSaved(true);
-                setTimeout(() => setIsSaved(false), 3000);
-            }
-        } catch (error) {
-            console.error('Error updating profile settings:', error);
+        if (res.data.modifiedCount > 0 || res.data.matchedCount > 0 || res.data.upsertedCount > 0 || res.data.acknowledged) {
+            refetch();
+            setIsSaved(true);
+            setTimeout(() => setIsSaved(false), 3000);
         }
     };
 
-
     return (
-        <div className="min-h-screen  py-8 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
                 <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
@@ -119,8 +113,6 @@ const Settings = () => {
                         </div>
                     </div>
 
-
-
                     <div className="md:col-span-3">
                         <form onSubmit={handleSubmit(onSubmit)} className="bg-base-100 rounded-box p-6 shadow-sm border border-gray-200 space-y-6">
 
@@ -133,16 +125,13 @@ const Settings = () => {
 
                                 <div className="flex items-center gap-4">
                                     <div className="avatar">
-                                        <div className="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                            <img src={userData?.photoURL || user?.photoURL || 'https://i.ibb.co/M8P5vQh/avatar.png'} alt="Profile" />
+                                        <div className="w-20 h-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+                                            <img
+                                                src={userData?.photoURL || user?.photoURL || 'https://i.ibb.co/M8P5vQh/avatar.png'}
+                                                alt="Profile"
+                                                className="w-full h-full object-cover"
+                                            />
                                         </div>
-                                    </div>
-                                    <div>
-                                        <button type="button" className="btn btn-outline btn-sm gap-2">
-                                            <FaCamera className="w-4 h-4" />
-                                            Change Photo
-                                        </button>
-                                        <p className="text-xs text-gray-500 mt-1">JPG or PNG. Max size 2MB.</p>
                                     </div>
                                 </div>
 

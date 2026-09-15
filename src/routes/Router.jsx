@@ -24,13 +24,13 @@ import AssignRiders from "../pages/Dashboard/AssignRiders/AssignRiders";
 import RiderRoute from "./RiderRoute";
 import AssignDeliveries from "../pages/Dashboard/AssignDeliveries/AssignDeliveries";
 import CompletedDeliveries from "../pages/Dashboard/CompletedDeliveries/CompletedDeliveries";
-import ParcelTrack from "../pages/ParcelTrack/ParcelTrack";
+import ParcelTrack from "../pages/TrackOrder/TrackOrder";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
-import ParcelsTracking from "../pages/Dashboard/DashboardHome/ParcelsTracking/ParcelsTracking";
 import BookParcel from "../pages/Dashboard/BookParcel/BookParcel";
 import BeRider from "../pages/Dashboard/BeRider/BeRider";
 import AllParcels from "../pages/Dashboard/AllParcels/AllParcels";
 import Settings from "../pages/Dashboard/Settings/Settings";
+import TrackOrder from "../pages/TrackOrder/TrackOrder";
 
 
 export const router = createBrowserRouter([
@@ -153,8 +153,8 @@ export const router = createBrowserRouter([
                 Component: PaymentHistory,
             },
             {
-                path: 'parcels-tracking',
-                Component: ParcelsTracking
+                path: 'track-order',
+                Component: TrackOrder
             },
             {
                 path: 'settings',

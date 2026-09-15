@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import useAxios from "../../hooks/useAxios";
 
-const ParcelTrack = () => {
+const TrackOrder = () => {
 
     const { trackingId } = useParams();
     const publicAxios = useAxios();
@@ -19,20 +19,29 @@ const ParcelTrack = () => {
 
 
     return (
-        <div className="mb-20">
+        <div className="">
+
+
+            <div className="space-y-5 mb-10 text-center md:-ml-48 ">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">Track Your Consignment</h1>
+                <p className="text-gray-500 sm:text-center md:-ml-16">Now you can easily track your consignment</p>
+            </div>
 
 
 
-            <div className="text-xl mb-10 ml-10">
+            <div className="text-xl mb-10  text-center sm:text-center md:-ml-52">
                 <span className="font-bold"> Tracking ID:</span> {trackings[0]?.trackingId || trackingId}
             </div>
 
 
 
-            <ul className="timeline timeline-vertical">
+            <ul className="timeline timeline-vertical bg-base-300 rounded-xl sm:w-sm md:w-xl mx-auto mt-20">
 
                 {
-                    trackings.map(tracking => <li key={tracking._id} className="">
+                    trackings.map((tracking, index) => <li key={tracking._id} className="min-h-20">
+
+
+
                         <div className="timeline-start">
                             {new Date(tracking.createdAt).toLocaleString("en-GB", {
                                 day: "2-digit",
@@ -43,11 +52,13 @@ const ParcelTrack = () => {
                                 hour12: true,
                             })}
                         </div>
-                        <div className="timeline-middle">
+
+
+                        <div className="timeline-middle mx-5">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
-                                fill="currentColor"
+                                fill="blue"
                                 className="h-5 w-5"
                             >
                                 <path
@@ -57,10 +68,15 @@ const ParcelTrack = () => {
                                 />
                             </svg>
                         </div>
+
+                        {index !== trackings.length && <hr className="bg-blue-500" />}
+
+
                         <div className="timeline-end timeline-box text-lg">
                             {tracking.details}
                         </div>
-                        <hr />
+                        <hr className="bg-blue-500"></hr>
+
                     </li>
 
                     )
@@ -77,4 +93,4 @@ const ParcelTrack = () => {
     );
 };
 
-export default ParcelTrack;
+export default TrackOrder;

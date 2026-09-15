@@ -93,18 +93,49 @@ const AdminDashboardHome = () => {
             </div>
 
 
-
             {/* Top Stats Cards */}
-            <div className="flex justify-center gap-5 flex-wrap my-6 mb-16">
+            <div className="flex justify-center gap-6 flex-wrap my-6 mb-16">
                 {deliveryStats.map((stat) => (
-                    <div key={stat._id} className="stats shadow bg-base-200">
-                        <div className="stat place-items-center">
-                            <div className="stat-title text-xl">
-                                {stat._id.split("-").join(" ").charAt(0).toUpperCase() +
-                                    stat._id.split("-").join(" ").slice(1)}
+                    <div
+                        key={stat._id}
+                        className="group relative w-64 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                    >
+                        <div className="flex flex-col items-center gap-2 px-6 py-8">
+                            {/* Icon badge */}
+                            <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-2 bg-[#EEF9DA] group-hover:scale-110 transition-transform duration-300">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-6 h-6 text-[#8FC31F]"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+                                    />
+                                </svg>
                             </div>
-                            <div className="stat-value">{stat.count}</div>
-                            <div className="stat-desc">
+
+                            {/* Title */}
+                            <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                {stat._id
+                                    ? stat._id
+                                        .split("-")
+                                        .join(" ")
+                                        .replace(/\b\w/g, (c) => c.toUpperCase())
+                                    : "Unknown"}
+                            </div>
+
+                            {/* Value */}
+                            <div className="text-4xl font-extrabold text-gray-800">
+                                {stat.count.toLocaleString()}
+                            </div>
+
+                            {/* Timestamp */}
+                            <div className="text-xs text-gray-400 mt-1">
                                 {new Date(stat.createdAt).toLocaleString("en-GB", {
                                     day: "2-digit",
                                     month: "short",
@@ -114,11 +145,13 @@ const AdminDashboardHome = () => {
                                     hour12: true,
                                 })}
                             </div>
+
+                            {/* Bottom accent line */}
+                            <div className="absolute bottom-0 left-0 h-1 w-full bg-[#B2E651]" />
                         </div>
                     </div>
                 ))}
             </div>
-
 
 
             {/* Area Chart Section */}
