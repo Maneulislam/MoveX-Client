@@ -35,7 +35,7 @@ const FAQ = () => {
 
                     <div className="collapse-content text-sm">
                         <div className="border-t border-dashed border-gray-300 w-full mb-4"></div>
-                        Yes. ZapShift is designed to be comfortable and accessible for riders of different ages, sizes, and body types. Our services are made to provide a safe, convenient, and user-friendly experience for everyone.
+                        Yes. MoveX is designed to be comfortable and accessible for riders of different ages, sizes, and body types. Our services are made to provide a safe, convenient, and user-friendly experience for everyone.
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@ const FAQ = () => {
 
                     <div className="collapse-content text-sm">
                         <div className="border-t border-dashed border-gray-300 w-full mb-4"></div>
-                        Yes, it can help! ZapShift Rider’s ergonomic design supports better posture and may reduce back strain during long rides. Regular use, combined with proper sitting posture and breaks, can help improve overall comfort and reduce back discomfort.
+                        Yes, it can help! MoveX Rider’s ergonomic design supports better posture and may reduce back strain during long rides. Regular use, combined with proper sitting posture and breaks, can help improve overall comfort and reduce back discomfort.
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@ const FAQ = () => {
 
                     <div className="collapse-content text-sm">
                         <div className="border-t border-dashed border-gray-300 w-full mb-4"></div>
-                        Yes. The ZapShift Rider App includes smart notification features such as **vibration alerts** to notify riders about new delivery requests, order updates, and important status changes. This helps riders stay updated even when they are on the move.
+                        Yes. The MoveX Rider App includes smart notification features such as **vibration alerts** to notify riders about new delivery requests, order updates, and important status changes. This helps riders stay updated even when they are on the move.
                     </div>
                 </div>
 

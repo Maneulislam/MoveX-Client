@@ -4,15 +4,18 @@ import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
 
     const [loginError, setLoginError] = useState("");
     const [googleError, setGoogleError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm();
 
@@ -24,6 +27,13 @@ const Login = () => {
 
     const location = useLocation()
 
+
+    // Helper to auto-fill credentials on button click
+    const handleSetCredentials = (email, password) => {
+        setValue("email", email, { shouldValidate: true });
+        setValue("password", password, { shouldValidate: true });
+        setLoginError("");
+    };
 
 
     const handleLogin = data => {
@@ -104,7 +114,7 @@ const Login = () => {
 
 
 
-            <div className="w-full max-w-[350px] mx-auto">
+            <div className="w-full max-w-87.5 mx-auto">
 
 
                 <div className="mb-6">
@@ -113,8 +123,39 @@ const Login = () => {
                     </h2>
 
                     <p className="text-sm  mt-1">
-                        Login with ZapShift
+                        Login with MoveX
                     </p>
+                </div>
+
+
+                {/* Demo Role Selector Buttons */}
+                <div className="mb-5 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-2">
+                        Click for Demo Credentials:
+                    </p>
+                    <div className="grid grid-cols-3 gap-2">
+                        <button
+                            type="button"
+                            onClick={() => handleSetCredentials("admin@movex.com", "123456")}
+                            className="btn btn-xs rounded bg-gray-800 hover:bg-black text-white border-none font-semibold text-[11px]"
+                        >
+                            Admin
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => handleSetCredentials("rider@movex.com", "123456")}
+                            className="btn btn-xs rounded bg-blue-600 hover:bg-blue-700 text-white border-none font-semibold text-[11px]"
+                        >
+                            Rider
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => handleSetCredentials("user@movex.com", "123456")}
+                            className="btn btn-xs rounded bg-emerald-600 hover:bg-emerald-700 text-white border-none font-semibold text-[11px]"
+                        >
+                            User
+                        </button>
+                    </div>
                 </div>
 
                 <form onSubmit={handleSubmit(handleLogin)} className="space-y-3">
@@ -139,6 +180,7 @@ const Login = () => {
 
                     </div>
 
+                    {/* 3. Password Input Field with Eye Toggle */}
                     <div>
                         <label className="label p-0 mb-1">
                             <span className="label-text text-xs font-bold text-gray-700">
@@ -146,19 +188,33 @@ const Login = () => {
                             </span>
                         </label>
 
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="input input-bordered w-full h-9 min-h-9 rounded-md text-sm border-gray-300 focus:border-primary focus:border-2 focus:outline-none"
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                className="input input-bordered w-full h-9 min-h-9 rounded-md text-sm border-gray-300 focus:border-primary focus:border-2 focus:outline-none pr-10"
+                                {...register("password", { required: true })}
+                            />
 
-                            {...register("password", { required: true })}
-                        />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                            >
+                                {showPassword ? (
+                                    <FaEyeSlash className="text-base" />
+                                ) : (
+                                    <FaEye className="text-base" />
+                                )}
+                            </button>
+                        </div>
 
-                        {errors.password?.type === 'required' && <span className="text-red-500">Password is required</span>}
-
+                        {errors.password?.type === "required" && (
+                            <span className="text-red-500 text-xs">Password is required</span>
+                        )}
 
                         {loginError && (
-                            <div className="text-red-500 text-sm font-medium">
+                            <div className="text-red-500 text-xs font-medium mt-1">
                                 {loginError}
                             </div>
                         )}

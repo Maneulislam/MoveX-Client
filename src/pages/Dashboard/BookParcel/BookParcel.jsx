@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import parcel from "../../../assets/parcel-icon.jpg"
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
@@ -104,8 +103,8 @@ const BookParcel = () => {
             <div className='px-40 py-20'>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3 sm:gap-5 mb-8 sm:mb-16 ">
-                    <img className="w-40 h-20 object-contain" src={parcel} alt="" />
-                    <h1 className='text-5xl font-extrabold '>Book A Parcel</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers-plus"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 .83.18 2 2 0 0 0 .83-.18l8.58-3.9a1 1 0 0 0 0-1.831z" /><path d="M16 17h6" /><path d="M19 14v6" /><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 .825.178" /><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l2.116-.962" /></svg>
+                    <h1 className='text-3xl md:text-4xl font-extrabold  '>Book A Parcel</h1>
 
                 </div>
                 <h6 className='text-2xl font-extrabold'>Enter your parcel details</h6>

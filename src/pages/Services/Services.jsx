@@ -4,25 +4,24 @@ import { FaTruckFast, FaGlobe, FaWarehouse, FaMoneyBillTransfer, FaHandshake, Fa
 const Services = () => {
     const services = useLoaderData() || [];
 
-    // Simple icon mapping object based on service index/type
     const iconMap = [FaTruckFast, FaGlobe, FaWarehouse, FaMoneyBillTransfer, FaHandshake, FaRotateLeft];
 
     return (
-        <div className="bg-base-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div className=" min-h-screen py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto space-y-20">
 
-                {/* Page Header */}
+
                 <div className="text-center max-w-3xl mx-auto">
 
                     <h1 className="text-4xl font-extrabold text-base-content sm:text-5xl">
                         Seamless Shipping <span className="text-primary">Solutions</span>
                     </h1>
                     <p className="mt-4 text-lg text-base-content/70">
-                        From express local deliveries to nationwide e-commerce fulfillment, ZapShift keeps your products moving efficiently across Bangladesh.
+                        From express local deliveries to nationwide e-commerce fulfillment, MoveX keeps your products moving efficiently across Bangladesh.
                     </p>
                 </div>
 
-                {/* Services Cards */}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
                     {services.map((service, index) => {
                         const Icon = iconMap[index % iconMap.length] || FaBoxesPacking;
@@ -56,10 +55,9 @@ const Services = () => {
                     })}
                 </div>
 
-                {/* How It Works Section */}
                 <div className="bg-base-200 rounded-3xl p-8 sm:p-12 border border-base-300 shadow-sm">
                     <div className="text-center max-w-2xl mx-auto mb-12">
-                        <h2 className="text-3xl font-bold text-base-content">How ZapShift Works</h2>
+                        <h2 className="text-3xl font-bold text-base-content">How <span className="text-primary">MoveX</span> Works</h2>
                         <p className="mt-2 text-base-content/70">
                             A straightforward 4-step process to get your package from your hands to its final destination.
                         </p>

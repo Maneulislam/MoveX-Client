@@ -1,13 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-    ResponsiveContainer,
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-} from "recharts";
+import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router";
@@ -103,46 +95,70 @@ const RiderDashboardHome = () => {
 
 
             {/* Top Stats Cards */}
-            <div className="flex justify-center gap-5 flex-wrap my-6 mb-16">
+            <div className="flex justify-center gap-6 flex-wrap my-6 mb-16">
                 {delivered.map((d) => (
                     <div
                         key={d._id}
-                        className="stats shadow bg-base-200"
+                        className="group relative w-64 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                     >
-                        <div className="stat place-items-center">
-                            <div className="stat-title text-xl">
-                                Parcel Delivered
-                            </div>
-                            <div className="stat-value">
-                                {d.deliveredCount}
+                        <div className="flex flex-col items-center gap-2 px-6 py-8">
+
+                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-2 bg-[#EEF9DA] group-hover:scale-110 transition-transform duration-300">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-6 h-6 text-[#8FC31F]"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+                                    />
+                                </svg>
                             </div>
 
-                            <div className="stat-desc">
+
+                            <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                Parcel Delivered
+                            </div>
+
+
+                            <div className="text-4xl font-extrabold text-gray-800">
+                                {d.deliveredCount?.toLocaleString()}
+                            </div>
+
+
+                            <div className="text-xs text-gray-400 mt-1">
                                 {new Date(d._id).toLocaleString("en-GB", {
                                     day: "2-digit",
                                     month: "short",
                                     year: "numeric",
-
                                 })}
                             </div>
 
 
+                            <div className="absolute bottom-0 left-0 h-1 w-full bg-[#B2E651]" />
                         </div>
                     </div>
                 ))}
             </div>
 
+
+
             {/* Area Chart */}
             <div className="w-full p-6 bg-white rounded-2xl border border-gray-200 font-sans shadow-sm">
 
-                {/* Header */}
+
                 <div className="flex items-center justify-between mb-6">
                     <h2 className="text-lg font-bold text-gray-800">
                         Delivery Statistics
                     </h2>
                 </div>
 
-                {/* Chart Container */}
+
                 <div className="p-4 bg-white rounded-xl border border-gray-100 h-80">
 
                     {isLoading ? (

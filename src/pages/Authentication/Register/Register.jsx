@@ -6,8 +6,11 @@ import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -149,7 +152,7 @@ const Register = () => {
                     </h2>
 
                     <p className="text-sm  mt-1">
-                        Register with ZapShift
+                        Register with MoveX
                     </p>
                 </div>
 
@@ -220,6 +223,8 @@ const Register = () => {
 
                     </div>
 
+
+
                     <div>
                         <label className="label p-0 mb-1">
                             <span className="label-text text-xs font-bold text-gray-700">
@@ -227,17 +232,30 @@ const Register = () => {
                             </span>
                         </label>
 
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="input input-bordered w-full h-9 min-h-9 rounded-md text-sm border-gray-300 focus:border-primary focus:border-2 focus:outline-none"
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                className="input input-bordered w-full h-9 min-h-9 rounded-md text-sm border-gray-300 focus:border-primary focus:border-2 focus:outline-none pr-10"
+                                {...register("password", { required: true })}
+                            />
 
-                            {...register("password", { required: true })}
-                        />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                            >
+                                {showPassword ? (
+                                    <FaEyeSlash className="text-base" />
+                                ) : (
+                                    <FaEye className="text-base" />
+                                )}
+                            </button>
+                        </div>
 
-                        {errors.password?.type === 'required' && <span className="text-red-500">Password is required</span>}
-
-
+                        {errors.password?.type === 'required' && (
+                            <span className="text-red-500 text-xs">Password is required</span>
+                        )}
                     </div>
 
 

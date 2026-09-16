@@ -52,7 +52,7 @@ const PaymentSuccessful = () => {
         doc.setTextColor(255, 255, 255);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(16);
-        doc.text("ZapShift - Payment Receipt", 14, 18);
+        doc.text("MoveX - Payment Receipt", 14, 18);
         doc.setFontSize(10);
         doc.setFont("helvetica", "normal");
         doc.text("Payment Confirmed & Order Processing", 14, 25);
@@ -90,9 +90,9 @@ const PaymentSuccessful = () => {
         doc.setTextColor(100, 116, 139);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(8);
-        doc.text("Thank you for shipping with ZapShift!", 14, 110);
+        doc.text("Thank you for shipping with MoveX!", 14, 110);
 
-        doc.save(`ZapShift-Receipt-${paymentInfo.trackingId || "order"}.pdf`);
+        doc.save(`MoveX-Receipt-${paymentInfo.trackingId || "order"}.pdf`);
     };
 
 

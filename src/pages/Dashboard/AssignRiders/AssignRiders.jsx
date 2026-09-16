@@ -79,7 +79,7 @@ const AssignRiders = () => {
         <div>
 
             {/* Total */}
-            <div className="card card-side bg-base-300 shadow-sm w-56 px-5 m-6">
+            <div className="card card-side bg-base-300 shadow-sm w-60 px-5 m-6">
                 <figure>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

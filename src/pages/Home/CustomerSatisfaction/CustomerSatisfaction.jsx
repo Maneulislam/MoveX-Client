@@ -32,7 +32,7 @@ const CustomerSatisfaction = () => {
                                 Become a Merchant
                             </button>
                             <button className="btn bg-secondary text-primary rounded-3xl w-full sm:w-auto">
-                                Earn with ZapShift Courier
+                                Earn with MoveX Courier
                             </button>
                         </div>
                     </div>

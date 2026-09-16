@@ -36,7 +36,7 @@ const BeRider = () => {
             .then(res => {
                 if (res.data.insertedId) {
 
-                    navigate('/assigned-deliveries');
+                    navigate('/dashboard');
 
                     Swal.fire({
                         position: "top-end",

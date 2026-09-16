@@ -61,7 +61,7 @@ const AssignDeliveries = () => {
         <div>
 
             {/* Total */}
-            <div className="card card-side bg-base-300 shadow-sm w-60 px-5 my-6">
+            <div className="card card-side bg-base-300 shadow-sm w-64 px-5 my-6">
                 <figure>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

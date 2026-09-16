@@ -18,7 +18,7 @@ const Banner = () => {
 
 
                 <div className="flex items-center absolute bottom-16 left-24">
-                    <Link to={'/dashboard/parcels-tracking'} className="btn bg-primary">Track Your Parcel</Link>
+                    <Link to={'/dashboard/parcel-tracking'} className="btn bg-primary">Track Your Parcel</Link>
                     <Link to={'/dashboard/be-rider'} className="btn ml-7">Be A Rider</Link>
 
                 </div>

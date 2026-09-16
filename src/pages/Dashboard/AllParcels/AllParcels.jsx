@@ -285,7 +285,7 @@ const AllParcels = () => {
 
 
                                     <td className="align-middle px-2 py-3">
-                                        <div className="flex flex-wrap items-center gap-2 sm:gap-4 justify-start sm:justify-center">
+                                        <div className="flex flex-wrap lg:flex-nowrap items-center gap-2 sm:gap-4 justify-center sm:justify-start w-full">
                                             <button
                                                 onClick={() => handleView(parcel._id)}
                                                 title="View Details"
