@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const publicAxios = axios.create({
-    baseURL: "https://zap-shift-server-eight-theta.vercel.app/"
+    baseURL: "https://zap-shift-server-eight-theta.vercel.app"
 })
 
 
