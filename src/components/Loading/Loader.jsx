@@ -37,7 +37,7 @@ const Loader = () => {
               textAnchor="middle"
               letterSpacing="1.5"
             >
-              DELIVERY
+              MoveX
             </text>
             <line x1="75" y1="100" x2="165" y2="100" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
 
