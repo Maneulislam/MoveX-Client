@@ -209,7 +209,7 @@ const ApproveRiders = () => {
                                     </td>
 
 
-                                    <td className="align-middle border-r border-base-300 text-center">
+                                    <td className="align-middle border-r border-base-300 text-center whitespace-nowrap">
                                         <div
                                             className={`inline-flex items-center justify-center ${rider.workStatus === 'available'
                                                 ? 'badge badge-soft badge-success'
