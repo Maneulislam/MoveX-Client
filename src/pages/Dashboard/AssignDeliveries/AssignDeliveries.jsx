@@ -94,6 +94,8 @@ const AssignDeliveries = () => {
                         <tr className="bg-base-200 text-center align-middle border-b border-base-300">
                             <th className="align-middle text-center border-r border-base-300">#</th>
                             <th className="align-middle text-center border-r border-base-300">Parcel Name</th>
+                            <th className="align-middle text-center border-r border-base-300">Pickup District</th>
+                            <th className="align-middle text-center border-r border-base-300">Deliveries District</th>
                             <th className="align-middle text-center border-r border-base-300">Delivery Status</th>
                             <th className="align-middle text-center border-r border-base-300">Amount</th>
                             <th className="align-middle text-center border-r border-base-300">Time</th>
@@ -109,6 +111,14 @@ const AssignDeliveries = () => {
                                 <tr key={parcel._id} className="text-center align-middle border-b border-base-300">
                                     <th className="align-middle text-center border-r border-base-300">{index + 1}</th>
                                     <td className="align-middle border-r border-base-300">{parcel.parcelName}</td>
+
+                                    <td className="align-middle border-r border-base-300">
+                                        {parcel.senderDistrict}
+                                    </td>
+
+                                    <td className="align-middle border-r border-base-300">
+                                        {parcel.receiverDistrict}
+                                    </td>
 
 
 
