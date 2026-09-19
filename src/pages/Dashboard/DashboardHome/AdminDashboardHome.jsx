@@ -170,10 +170,7 @@ const AdminDashboardHome = () => {
                         </div>
                     </div>
                 ))}
-            </div>
-
-
-            {/* Area Chart Section */}
+            </div> pus
             <div className="w-full p-6  bg-white rounded-2xl border border-gray-200 font-sans shadow-sm">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
