@@ -105,7 +105,7 @@ const AdminDashboardHome = () => {
                         key={stat._id}
                         className="group relative w-64 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                     >
-                        <div className="flex flex-col items-center gap-2 px-6 py-8">
+                        <div className="flex flex-col items-center gap-2 px-6 pt-8 pb-5">
                             {/* Icon badge */}
                             <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-2 bg-[#EEF9DA] group-hover:scale-110 transition-transform duration-300">
                                 <svg
@@ -124,7 +124,6 @@ const AdminDashboardHome = () => {
                                 </svg>
                             </div>
 
-                            {/* Title */}
                             <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
                                 {stat._id
                                     ? stat._id
@@ -134,7 +133,6 @@ const AdminDashboardHome = () => {
                                     : "Unknown"}
                             </div>
 
-                            {/* Value */}
                             <div className="text-4xl font-extrabold text-gray-800">
                                 {stat.count.toLocaleString()}
                             </div>
@@ -142,7 +140,7 @@ const AdminDashboardHome = () => {
 
                             {/* Progress Indicator */}
                             <div className="w-full mt-3">
-                                <div className="flex justify-between items-center ">
+                                <div className="flex justify-between items-center mb-1">
                                     <span className="text-xs font-medium text-gray-500">
                                         Share of total
                                     </span>
@@ -170,7 +168,7 @@ const AdminDashboardHome = () => {
                         </div>
                     </div>
                 ))}
-            </div> pus
+            </div>
             <div className="w-full p-6  bg-white rounded-2xl border border-gray-200 font-sans shadow-sm">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
