@@ -74,6 +74,11 @@ const AdminDashboardHome = () => {
         count: stat.count,
     }));
 
+    const totalParcels = deliveryStats.reduce(
+        (total, stat) => total + stat.count,
+        0
+    );
+
     return (
         <div className="p-6 space-y-8">
 
@@ -134,16 +139,30 @@ const AdminDashboardHome = () => {
                                 {stat.count.toLocaleString()}
                             </div>
 
-                            {/* Timestamp */}
-                            <div className="text-xs text-gray-400 mt-1">
-                                {new Date(stat.createdAt).toLocaleString("en-GB", {
-                                    day: "2-digit",
-                                    month: "short",
-                                    year: "numeric",
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                    hour12: true,
-                                })}
+
+                            {/* Progress Indicator */}
+                            <div className="w-full mt-3">
+                                <div className="flex justify-between items-center ">
+                                    <span className="text-xs font-medium text-gray-500">
+                                        Share of total
+                                    </span>
+                                    <span className="text-xs font-bold text-gray-700">
+                                        {totalParcels > 0
+                                            ? Math.round((stat.count / totalParcels) * 100)
+                                            : 0}%
+                                    </span>
+                                </div>
+
+                                <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div
+                                        className="h-full bg-[#B2E651] rounded-full transition-all duration-500"
+                                        style={{
+                                            width: `${totalParcels > 0
+                                                ? (stat.count / totalParcels) * 100
+                                                : 0}%`
+                                        }}
+                                    />
+                                </div>
                             </div>
 
                             {/* Bottom accent line */}
