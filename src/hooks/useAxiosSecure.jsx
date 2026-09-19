@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 
 
 const instanceAxios = axios.create({
-    baseURL: "https://zap-shift-server-eight-theta.vercel.app"
+    baseURL: "https://movexpd-server.vercel.app"
 })
 
 const useAxiosSecure = () => {
